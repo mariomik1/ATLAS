@@ -1,0 +1,77 @@
+default_watchlist:
+  - ticker: MSFT
+    name: Microsoft
+    asset_class: stock
+    sector: Software
+    theme: AI Infrastructure
+    currency: USD
+    isin: US5949181045
+    wkn: 870747
+    sample_price: 465.0
+    atr_pct: 2.2
+    data_quality: sample
+  - ticker: NVDA
+    name: Nvidia
+    asset_class: stock
+    sector: Semiconductors
+    theme: AI Compute
+    currency: USD
+    isin: US67066G1040
+    wkn: 918422
+    sample_price: 128.0
+    atr_pct: 4.8
+    data_quality: sample
+  - ticker: V
+    name: Visa
+    asset_class: stock
+    sector: Payments
+    theme: Finance & Payment
+    currency: USD
+    isin: US92826C8394
+    wkn: A0NC7B
+    sample_price: 275.0
+    atr_pct: 1.9
+    data_quality: sample
+  - ticker: CRWD
+    name: CrowdStrike
+    asset_class: stock
+    sector: Cybersecurity
+    theme: Cybersecurity
+    currency: USD
+    isin: US22788C1053
+    wkn: A2PK2R
+    sample_price: 392.0
+    atr_pct: 4.1
+    data_quality: sample
+  - ticker: XLE
+    name: Energy Select Sector SPDR Fund
+    asset_class: etf
+    sector: Energy
+    theme: Energy
+    currency: USD
+    isin: US81369Y5069
+    wkn: 989696
+    sample_price: 94.0
+    atr_pct: 2.1
+    data_quality: sample
+identifier_map:
+  US5949181045: MSFT
+  870747: MSFT
+  Microsoft: MSFT
+  MSFT.O: MSFT
+  US67066G1040: NVDA
+  918422: NVDA
+  Nvidia: NVDA
+  NVIDIA Corporation: NVDA
+  US92826C8394: V
+  A0NC7B: V
+  Visa: V
+  Visa Inc: V
+  US22788C1053: CRWD
+  A2PK2R: CRWD
+  CrowdStrike: CRWD
+  CrowdStrike Holdings: CRWD
+  US81369Y5069: XLE
+  989696: XLE
+  Energy Select Sector SPDR: XLE
+  XLE ETF: XLE

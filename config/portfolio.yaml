@@ -1,0 +1,42 @@
+owner: Mario
+base_currency: EUR
+as_of: 2026-07-05
+cash:
+  amount_eur: 140000
+  average_interest_rate_pct: 2.2
+satellite:
+  allocated_capital_eur: 0
+  max_capital_eur: 50000
+targets:
+  cash_min_eur: 50000
+  cash_max_eur: 90000
+  allocation_pct:
+    core_etf: 60
+    satellite: 8
+    real_estate: 20
+    cash: 10
+    precious_metals: 2
+fire:
+  target_monthly_cashflow_eur: 3500
+  safe_withdrawal_rate_pct: 3.5
+  monthly_contribution_eur: 4000
+  expected_return_pct: 5.0
+positions:
+  - symbol: JEPQ
+    name: JPMorgan Nasdaq Equity Premium Income ETF
+    asset_class: etf
+    sector: Nasdaq Income
+    theme: tech_ai_proxy
+    market_value_eur: 50000
+    intent: income_satellite
+  - symbol: CORE_WORLD
+    name: Broad World ETF Placeholder
+    asset_class: etf
+    sector: Global Equity
+    theme: core_global
+    market_value_eur: 0
+    intent: core
+constraints:
+  max_satellite_capital_eur: 50000
+  max_tech_ai_exposure_pct: 35
+  rebalance_advice_mode: advisory_only

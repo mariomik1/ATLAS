@@ -1,0 +1,11 @@
+symbol,published_at,title,summary,source,url,sentiment_score,relevance_score,topics,risk_flags
+MSFT,2026-07-05T07:30:00+00:00,Microsoft expands AI infrastructure capacity,Sample catalyst: cloud and AI infrastructure investments remain a key theme for Microsoft.,sample,,0.45,92,AI|Cloud|Infrastructure,
+MSFT,2026-07-04T12:00:00+00:00,Analysts cite resilient enterprise software demand,Sample catalyst: enterprise subscriptions and recurring revenue support the core thesis.,sample,,0.25,78,Software|Enterprise,
+NVDA,2026-07-05T08:15:00+00:00,Nvidia demand remains strong but valuation debate increases,Sample catalyst: AI compute demand is strong while valuation sensitivity remains high.,sample,,0.35,95,AI|Semiconductors,Valuation risk
+NVDA,2026-07-04T09:40:00+00:00,Semiconductor sector shows elevated volatility,Sample risk: volatility in high-beta AI leaders can amplify drawdowns.,sample,,-0.15,74,Semiconductors|Volatility,High beta risk
+V,2026-07-05T06:45:00+00:00,Visa benefits from resilient payment volumes,Sample catalyst: payment volume resilience supports quality compounder profile.,sample,,0.30,86,Payments|Finance,
+V,2026-07-03T15:10:00+00:00,Regulatory discussion around card fees continues,Sample risk: fee regulation remains a watch item for payment networks.,sample,,-0.10,70,Payments|Regulation,Regulatory risk
+CRWD,2026-07-05T10:20:00+00:00,Cybersecurity spending remains a board-level priority,Sample catalyst: enterprise security budgets continue to support cybersecurity leaders.,sample,,0.40,88,Cybersecurity|Software,
+CRWD,2026-07-04T11:55:00+00:00,CrowdStrike peers report mixed software multiples,Sample risk: software valuation multiples can compress quickly in risk-off markets.,sample,,-0.05,65,Cybersecurity|Software,Multiple compression risk
+XLE,2026-07-05T05:30:00+00:00,Energy equities supported by supply discipline,Sample catalyst: energy sector benefits from supply discipline and diversification value.,sample,,0.18,80,Energy|Resources,
+XLE,2026-07-04T14:25:00+00:00,Oil prices remain sensitive to macro demand signals,Sample risk: energy beta can reverse if growth expectations weaken.,sample,,-0.08,72,Energy|Macro,Commodity price risk

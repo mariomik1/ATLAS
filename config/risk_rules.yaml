@@ -1,0 +1,20 @@
+satellite:
+  max_capital_eur: 50000
+  preferred_start_capital_eur: 25000
+  max_drawdown_pause_pct: 15
+  expected_trades_per_year: "20-40"
+  default_max_position_eur: 10000
+  allow_position_above_default_with_manual_approval: true
+  max_open_positions: 5
+
+risk_per_trade:
+  mode: volatility_adjusted
+  low_vol_pct_of_satellite: 0.75
+  medium_vol_pct_of_satellite: 1.00
+  high_vol_pct_of_satellite: 1.25
+  absolute_max_pct_of_satellite: 2.00
+
+portfolio:
+  rebalance_suggestions: advisory_only
+  warning_level: clear_warning
+  hard_blocks: false

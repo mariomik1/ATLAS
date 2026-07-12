@@ -1,0 +1,6 @@
+symbol,event_date,event_type,description,importance,source
+MSFT,2026-07-29,earnings,Expected quarterly earnings window; review guidance and Azure/AI commentary.,high,sample
+NVDA,2026-08-26,earnings,Expected quarterly earnings window; AI demand and margin commentary are central catalysts.,high,sample
+V,2026-07-24,earnings,Expected quarterly earnings window; payment volume and regulatory commentary matter.,medium,sample
+CRWD,2026-08-28,earnings,Expected quarterly earnings window; ARR growth and security demand matter.,high,sample
+XLE,2026-07-23,macro,Energy sector sensitivity to oil inventory and macro demand data.,medium,sample

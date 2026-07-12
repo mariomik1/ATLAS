@@ -1,0 +1,119 @@
+app:
+  name: Atlas
+  version: 0.10.0-technical-mvp
+  mode: technical_mvp_news_portfolio_fire_mission_control
+  timezone: Europe/Vienna
+  base_currency: EUR
+
+market:
+  provider: csv_sample        # csv_sample | yfinance | alphavantage
+  live_providers_enabled: false
+  csv_path: data/samples/benchmark_history.csv
+  lookback_days: 320
+  default_regime: neutral     # fallback only if provider fails and fallback_to_manual_regime is true
+  fallback_to_manual_regime: true
+  allow_new_trades_when_risk_off: small_position_only
+  max_daily_candidates: 10
+  no_trade_message: "Heute wurde keine Aktie mit ausreichend hoher Qualität gefunden. Die besten Kandidaten werden dennoch als Watchlist angezeigt."
+  benchmarks:
+    - symbol: SPY
+      name: S&P 500 ETF Proxy
+      role: us_large_cap
+      weight: 0.35
+    - symbol: QQQ
+      name: Nasdaq 100 ETF Proxy
+      role: growth_tech
+      weight: 0.30
+    - symbol: ACWI
+      name: Global Equities Proxy
+      role: world_equity
+      weight: 0.25
+    - symbol: VIX
+      name: Volatility Index Proxy
+      role: volatility
+      weight: 0.10
+  regime_thresholds:
+    risk_on: 70
+    neutral: 45
+  position_multipliers:
+    risk_on: 1.0
+    neutral: 0.65
+    risk_off: 0.30
+    unknown: 0.20
+
+ai:
+  mode: deterministic_template
+  hallucination_guardrails: true
+
+safety:
+  broker_connections_allowed: false
+  auto_trading_allowed: false
+
+asset_data:
+  provider: csv_sample        # csv_sample | yfinance | fmp | alphavantage | polygon
+  live_providers_enabled: false
+  csv_path: data/samples/asset_ohlcv.csv
+  min_history_bars: 220
+  cache_ttl_hours: 24
+  yfinance_period: 18mo
+  yfinance_interval: 1d
+
+news:
+  provider: csv_sample        # csv_sample | marketaux | newsapi | fmp
+  csv_path: data/samples/news_items.csv
+  events_csv_path: data/samples/events.csv
+  max_items_per_symbol: 6
+  max_market_news: 8
+  cache_ttl_minutes: 120
+  live_providers_enabled: false
+  marketaux_base_url: https://api.marketaux.com/v1/news/all
+  newsapi_base_url: https://newsapi.org/v2/everything
+  fmp_base_url: https://financialmodelingprep.com/stable
+
+catalyst_engine:
+  positive_sentiment_threshold: 0.20
+  negative_sentiment_threshold: -0.20
+  high_impact_threshold: 75
+  max_news_age_days: 7
+  require_source_for_ai_statement: true
+
+fundamentals:
+  provider: csv_sample        # csv_sample | fmp | alphavantage
+  csv_path: data/samples/fundamentals.csv
+  cache_ttl_hours: 168
+  live_providers_enabled: false
+
+identifiers:
+  provider: local_sample      # local_sample | openfigi | fmp
+  allow_partial_matches: true
+  max_search_results: 10
+  cache_ttl_days: 30
+  live_providers_enabled: false
+
+
+provider_activation:
+  live_providers_enabled: false
+  fail_closed_on_missing_key: true
+  allow_network_calls_in_tests: false
+  provider_status_refresh_seconds: 300
+  approved_live_providers:
+    market: [yfinance, alphavantage]
+    asset_data: [yfinance, fmp, alphavantage, polygon]
+    news: [marketaux, newsapi, fmp]
+    fundamentals: [fmp, alphavantage]
+    identifiers: [openfigi, fmp]
+
+cache:
+  base_dir: data/cache
+  default_ttl_seconds:
+    market: 43200
+    asset_data: 86400
+    news: 7200
+    fundamentals: 604800
+    identifiers: 2592000
+  stale_allowed_when_provider_fails: true
+
+audit:
+  fetch_log_path: data/cache/fetch_audit.jsonl
+  log_cache_hits: true
+  log_provider_status_checks: true

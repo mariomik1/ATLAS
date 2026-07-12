@@ -1,0 +1,14 @@
+[project]
+name = "atlas"
+version = "0.6.1-sprint6b"
+description = "Atlas - Personal Wealth Operating System Sprint 6B FMP/OpenFIGI Provider Activation"
+requires-python = ">=3.11"
+authors = [{ name = "Mario Mikikits" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100

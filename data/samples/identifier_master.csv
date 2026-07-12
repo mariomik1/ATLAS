@@ -1,0 +1,18 @@
+symbol,name,asset_class,exchange,country,currency,sector,industry,theme,isin,wkn,aliases,sample_price,atr_pct,momentum_hint,data_quality
+MSFT,Microsoft Corporation,stock,NASDAQ,US,USD,Software,Infrastructure Software,AI Cloud,US5949181045,870747,Microsoft|Microsoft Corp|MSFT,508.7,2.2,82,sample
+NVDA,NVIDIA Corporation,stock,NASDAQ,US,USD,Semiconductors,GPUs and Accelerated Computing,AI Semiconductors,US67066G1040,918422,Nvidia|NVIDIA Corp|NVDA,161.2,4.8,90,sample
+V,Visa Inc.,stock,NYSE,US,USD,Payments,Payment Networks,Finance Payment,US92826C8394,A0NC7B,Visa|Visa Inc|Visa Class A,349.1,2.1,76,sample
+MA,Mastercard Incorporated,stock,NYSE,US,USD,Payments,Payment Networks,Finance Payment,US57636Q1040,A0F602,Mastercard|MasterCard|MA,566.4,2.3,78,sample
+CRWD,CrowdStrike Holdings Inc.,stock,NASDAQ,US,USD,Cybersecurity,Endpoint Security,Cyber AI,US22788C1053,A2PK2R,CrowdStrike|Crowdstrike|CRWD,384.5,5.2,84,sample
+PANW,Palo Alto Networks Inc.,stock,NASDAQ,US,USD,Cybersecurity,Network Security,Cybersecurity,US6974351057,A1JZ0Q,Palo Alto|Palo Alto Networks|PANW,203.6,3.8,80,sample
+AAPL,Apple Inc.,stock,NASDAQ,US,USD,Technology,Consumer Electronics,Blue Chip,US0378331005,865985,Apple|Apple Inc|AAPL,215.0,2.5,72,sample
+GOOGL,Alphabet Inc. Class A,stock,NASDAQ,US,USD,Software,Internet Content,AI Cloud,US02079K3059,A14Y6F,Alphabet|Google|GOOGL,180.5,2.7,75,sample
+META,Meta Platforms Inc.,stock,NASDAQ,US,USD,Software,Social Media and AI,AI Advertising,US30303M1027,A1JWVX,Meta|Facebook|META,535.0,3.2,78,sample
+AMZN,Amazon.com Inc.,stock,NASDAQ,US,USD,Consumer Discretionary,E-Commerce and Cloud,AI Cloud,US0231351067,906866,Amazon|Amazon.com|AMZN,193.0,3.1,76,sample
+ASML,ASML Holding N.V.,stock,NASDAQ,NL,USD,Semiconductors,Semiconductor Equipment,AI Supply Chain,USN070592100,A1J4U4,ASML|ASML Holding,1040.0,3.8,77,sample
+AVGO,Broadcom Inc.,stock,NASDAQ,US,USD,Semiconductors,Semiconductor and Infrastructure Software,AI Infrastructure,US11135F1012,A2JG9Z,Broadcom|AVGO,1720.0,4.2,82,sample
+LLY,Eli Lilly and Company,stock,NYSE,US,USD,Healthcare,Pharmaceuticals,Healthcare Innovation,US5324571083,858560,Eli Lilly|Lilly|LLY,905.0,2.9,74,sample
+UNH,UnitedHealth Group Incorporated,stock,NYSE,US,USD,Healthcare,Managed Healthcare,Healthcare Blue Chip,US91324P1021,869561,UnitedHealth|United Health|UNH,485.0,2.5,60,sample
+XOM,Exxon Mobil Corporation,stock,NYSE,US,USD,Energy,Integrated Oil and Gas,Energy Resources,US30231G1022,852549,Exxon|ExxonMobil|XOM,115.0,2.4,64,sample
+XLE,Energy Select Sector SPDR Fund,etf,NYSEARCA,US,USD,Energy,Sector ETF,Energy ETF,US81369Y5069,989820,Energy ETF|SPDR Energy|XLE,91.2,2.6,68,sample
+GLD,SPDR Gold Shares,etf,NYSEARCA,US,USD,Precious Metals,Gold ETF,Gold Hedge,US78463V1070,A0Q27V,Gold ETF|SPDR Gold|GLD,218.0,1.8,66,sample

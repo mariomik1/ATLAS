@@ -1,0 +1,3927 @@
+{
+  "app_name": "Atlas",
+  "as_of": "2026-07-05T19:39:32.027921Z",
+  "market": {
+    "regime": "risk_on",
+    "score": 70.76,
+    "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+    "as_of": "2026-07-05T19:39:32.002853Z",
+    "data_quality": {
+      "level": "sample",
+      "provider": "csv_benchmark_sample",
+      "as_of": "2026-07-05T19:39:32.002846Z",
+      "issues": [
+        "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+      ]
+    },
+    "indicators": [
+      {
+        "symbol": "SPY",
+        "name": "S&P 500 ETF Proxy",
+        "close": 824.06,
+        "sma_50": 707.77,
+        "sma_200": 703.53,
+        "return_20d_pct": 16.32,
+        "return_60d_pct": 28.66,
+        "distance_to_sma_50_pct": 16.43,
+        "distance_to_sma_200_pct": 17.13,
+        "rsi_14": 97.14,
+        "trend_status": "uptrend",
+        "score": 81.83,
+        "reasons": [
+          "Above SMA50.",
+          "Above SMA200.",
+          "SMA50 above SMA200.",
+          "20d return 16.3%."
+        ],
+        "risks": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:31.993785Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        }
+      },
+      {
+        "symbol": "QQQ",
+        "name": "Nasdaq 100 ETF Proxy",
+        "close": 537.09,
+        "sma_50": 467.77,
+        "sma_200": 462.07,
+        "return_20d_pct": 13.16,
+        "return_60d_pct": 36.4,
+        "distance_to_sma_50_pct": 14.82,
+        "distance_to_sma_200_pct": 16.24,
+        "rsi_14": 86.39,
+        "trend_status": "uptrend",
+        "score": 80.25,
+        "reasons": [
+          "Above SMA50.",
+          "Above SMA200.",
+          "SMA50 above SMA200.",
+          "20d return 13.2%."
+        ],
+        "risks": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:31.993785Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        }
+      },
+      {
+        "symbol": "ACWI",
+        "name": "Global Equities Proxy",
+        "close": 141.71,
+        "sma_50": 128.55,
+        "sma_200": 133.06,
+        "return_20d_pct": 9.55,
+        "return_60d_pct": 18.79,
+        "distance_to_sma_50_pct": 10.23,
+        "distance_to_sma_200_pct": 6.5,
+        "rsi_14": 93.86,
+        "trend_status": "mixed",
+        "score": 68.25,
+        "reasons": [
+          "Above SMA50.",
+          "Above SMA200.",
+          "SMA50 below SMA200.",
+          "20d return 9.6%."
+        ],
+        "risks": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:31.993785Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        }
+      },
+      {
+        "symbol": "VIX",
+        "name": "Volatility Index Proxy",
+        "close": 25.22,
+        "sma_50": 15.94,
+        "sma_200": 14.14,
+        "return_20d_pct": 20.97,
+        "return_60d_pct": 152.7,
+        "distance_to_sma_50_pct": 58.25,
+        "distance_to_sma_200_pct": 78.34,
+        "rsi_14": 92.95,
+        "trend_status": "hostile",
+        "score": 30.41,
+        "reasons": [
+          "Volatility proxy at 25.22."
+        ],
+        "risks": [
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:31.993785Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        }
+      }
+    ],
+    "component_scores": {
+      "trend": 72.82,
+      "breadth": 100.0,
+      "momentum": 76.78,
+      "volatility": 30.41
+    },
+    "trade_permission": "normal_new_trades_allowed",
+    "position_size_multiplier": 1.0,
+    "warnings": [
+      "RSI is extended; avoid chasing.",
+      "Short-term market may be extended above SMA50.",
+      "Volatility is elevated; reduce new risk positions.",
+      "Volatility has risen quickly over 20 sessions.",
+      "Market regime is based on bundled sample history, not current live data."
+    ]
+  },
+  "portfolio": {
+    "owner": "Mario",
+    "base_currency": "EUR",
+    "as_of": "2026-07-05",
+    "cash_eur": 140000.0,
+    "cash_interest_rate_pct": 2.2,
+    "positions": [
+      {
+        "symbol": "JEPQ",
+        "name": "JPMorgan Nasdaq Equity Premium Income ETF",
+        "asset_class": "etf",
+        "sector": "Nasdaq Income",
+        "theme": "tech_ai_proxy",
+        "market_value_eur": 50000.0,
+        "intent": "income_satellite"
+      },
+      {
+        "symbol": "CORE_WORLD",
+        "name": "Broad World ETF Placeholder",
+        "asset_class": "etf",
+        "sector": "Global Equity",
+        "theme": "core_global",
+        "market_value_eur": 0.0,
+        "intent": "core"
+      }
+    ],
+    "satellite_max_eur": 50000.0,
+    "satellite_allocated_eur": 0.0,
+    "cash_target_min_eur": 0.0,
+    "cash_target_max_eur": 0.0,
+    "asset_allocation": {},
+    "sector_exposure": {},
+    "tech_ai_exposure_eur": 0.0,
+    "tech_ai_exposure_pct": 0.0,
+    "alerts": [],
+    "target_cash_min_eur": 50000.0,
+    "target_cash_max_eur": 90000.0,
+    "target_allocations": {
+      "core_etf": 60.0,
+      "satellite": 8.0,
+      "real_estate": 20.0,
+      "cash": 10.0,
+      "precious_metals": 2.0
+    },
+    "exposure_by_asset_class": {
+      "cash": 73.68,
+      "etf": 26.32
+    },
+    "exposure_by_sector": {
+      "Global Equity": 0.0,
+      "Nasdaq Income": 26.32
+    },
+    "exposure_by_theme": {
+      "core_global": 0.0,
+      "tech_ai_proxy": 52.63
+    },
+    "risk_flags": [
+      "Cash is above target range by EUR 50,000.",
+      "Tech/AI proxy exposure is high at 52.6% versus 35.0% guideline."
+    ],
+    "advisory_actions": [
+      "Cash above target range. Advisory only: evaluate staged deployment of up to EUR 50,000 into Core ETF, real-estate reserve or high-conviction opportunities.",
+      "Satellite risk budget capped at EUR 50,000.",
+      "Portfolio warning: Cash is above target range by EUR 50,000.",
+      "Portfolio warning: Tech/AI proxy exposure is high at 52.6% versus 35.0% guideline."
+    ]
+  },
+  "fire": {
+    "status": "build_phase",
+    "progress_pct": 15.83,
+    "target_monthly_cashflow_eur": 3500.0,
+    "projected_year": 2037,
+    "message": "FIRE Engine v1: EUR 190,000 tracked versus EUR 1,200,000 target; projected target year 2037 under configured assumptions.",
+    "target_capital_eur": 1200000.0,
+    "current_capital_eur": 190000.0,
+    "monthly_contribution_eur": 0.0,
+    "expected_return_pct": 5.0,
+    "years_to_target": null,
+    "probability_pct": null,
+    "scenario": {
+      "base_case_years_to_target": 11.19,
+      "annual_savings_eur": 60000.0,
+      "expected_nominal_return_pct": 5.0,
+      "safe_withdrawal_rate_pct": 3.5,
+      "current_cash_pct": 73.68,
+      "tech_ai_exposure_pct": 0
+    },
+    "gap_to_target_eur": 1010000.0,
+    "annual_savings_eur": 60000.0,
+    "expected_nominal_return_pct": 5.0,
+    "safe_withdrawal_rate_pct": 3.5,
+    "fire_probability_pct": 48.7
+  },
+  "market_catalysts": {
+    "symbol": "MARKET",
+    "score": 69.46,
+    "news_count": 3,
+    "average_sentiment": 0.177,
+    "average_relevance": 79.0,
+    "average_impact": 70.33,
+    "primary_catalyst": "US equities show constructive breadth",
+    "catalyst_type": "positive",
+    "event_types": [
+      "central_bank",
+      "market_breadth",
+      "volatility"
+    ],
+    "upcoming_events": [],
+    "news": [
+      {
+        "symbol": "MARKET",
+        "title": "US equities show constructive breadth",
+        "summary": "Sample item: breadth improves across large-cap growth and quality sectors.",
+        "source": "Atlas Sample News",
+        "url": "https://example.com/market-breadth",
+        "published_at": "2026-07-05T07:00:00Z",
+        "category": "market",
+        "event_type": "market_breadth",
+        "sentiment_score": 0.38,
+        "relevance_score": 86.0,
+        "impact_score": 75.0,
+        "risk_flag": false,
+        "topics": [
+          "market",
+          "market_breadth"
+        ],
+        "risk_flags": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:31.979862Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      {
+        "symbol": "MARKET",
+        "title": "VIX remains contained",
+        "summary": "Sample item: volatility conditions remain supportive for measured risk-taking.",
+        "source": "Atlas Sample News",
+        "url": "https://example.com/vix-contained",
+        "published_at": "2026-07-05T06:30:00Z",
+        "category": "market",
+        "event_type": "volatility",
+        "sentiment_score": 0.25,
+        "relevance_score": 78.0,
+        "impact_score": 70.0,
+        "risk_flag": false,
+        "topics": [
+          "market",
+          "volatility"
+        ],
+        "risk_flags": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:31.979862Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      {
+        "symbol": "MARKET",
+        "title": "Fed commentary keeps rates in focus",
+        "summary": "Sample item: rate expectations remain a key variable for growth and quality stocks.",
+        "source": "Atlas Sample News",
+        "url": "https://example.com/fed-rates",
+        "published_at": "2026-07-04T18:30:00Z",
+        "category": "macro",
+        "event_type": "central_bank",
+        "sentiment_score": -0.1,
+        "relevance_score": 73.0,
+        "impact_score": 66.0,
+        "risk_flag": false,
+        "topics": [
+          "macro",
+          "central_bank"
+        ],
+        "risk_flags": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:31.979862Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      }
+    ],
+    "positive_count": 2,
+    "negative_count": 0,
+    "risk_flag_count": 0,
+    "reasons": [
+      "Primary catalyst: US equities show constructive breadth (Atlas Sample News).",
+      "Average news sentiment is neutral/mixed (0.18).",
+      "News relevance is high (79/100)."
+    ],
+    "risks": [
+      "No explicit Sprint 3 news risk flag found; still validate with live sources before action."
+    ],
+    "data_quality": {
+      "level": "sample",
+      "provider": "csv_sample_news",
+      "as_of": "2026-07-05T19:39:32.003169Z",
+      "issues": [
+        "Offline sample news/events. Not live news."
+      ]
+    }
+  },
+  "headline": "Chancen und Vermögensentwicklung: Atlas Technical MVP briefing is ready.",
+  "no_trade_message": "Heute wurde keine Aktie mit ausreichend hoher Qualität gefunden. Die besten Kandidaten werden dennoch als Watchlist angezeigt.",
+  "recommendations": [
+    {
+      "asset": {
+        "symbol": "NVDA",
+        "name": "Nvidia",
+        "asset_class": "stock",
+        "sector": "Semiconductors",
+        "theme": "AI Compute",
+        "currency": "USD",
+        "isin": "US67066G1040",
+        "wkn": "918422"
+      },
+      "intent": "swing",
+      "verdict": "watch",
+      "strategy": "momentum_pullback",
+      "atlas_score": 73.46,
+      "score_breakdown": {
+        "total_score": 73.46,
+        "factors": [
+          {
+            "name": "market",
+            "score": 70.76,
+            "weight": 18.0,
+            "reasons": [
+              "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:32.002846Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "name": "fundamentals",
+            "score": 84.77,
+            "weight": 12.0,
+            "reasons": [
+              "Growth metrics are above Atlas baseline.",
+              "Margins/returns indicate strong profitability.",
+              "Balance sheet risk appears controlled in sample data.",
+              "Valuation is acceptable relative to growth/quality.",
+              "Analyst revision score is supportive.",
+              "Gross margin is high (75.1%)."
+            ],
+            "risks": [
+              "Beta is high at 1.78; position sizing should be conservative."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_fundamentals",
+              "as_of": "2026-07-05T19:39:31.967901Z",
+              "issues": [
+                "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+              ]
+            }
+          },
+          {
+            "name": "momentum",
+            "score": 81.3,
+            "weight": 24.0,
+            "reasons": [
+              "EMA20 is above EMA50.",
+              "EMA50 is above SMA200.",
+              "Price is above SMA200.",
+              "RSI is in the preferred constructive range."
+            ],
+            "risks": [
+              "Price is below EMA20.",
+              "20-day return is negative (-1.8%)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.013667Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "chart_timing",
+            "score": 93.0,
+            "weight": 24.0,
+            "reasons": [
+              "Pullback is inside the preferred trend zone near EMA20/support.",
+              "Distance to EMA20 is inside the preferred entry band."
+            ],
+            "risks": [
+              "Price is below EMA20.",
+              "20-day return is negative (-1.8%)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.013667Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "risk",
+            "score": 70.0,
+            "weight": 12.0,
+            "reasons": [
+              "Risk score uses ATR proxy, configured risk budget and market-regime multiplier."
+            ],
+            "risks": [
+              "High volatility; position size should be reduced or actively managed."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979725Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "portfolio_fit",
+            "score": 74.0,
+            "weight": 8.0,
+            "reasons": [
+              "High ATR suggests using only tactical swing exposure.",
+              "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,828."
+            ],
+            "risks": [
+              "Technology/AI exposure must be checked against current portfolio before execution."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979725Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "catalyst_ai",
+            "score": 69.88,
+            "weight": 2.0,
+            "reasons": [
+              "Primary catalyst: NVIDIA data center demand remains strong (Atlas Sample News).",
+              "Average news sentiment is positive (0.24).",
+              "News relevance is high (85/100).",
+              "Catalyst impact is high (80/100).",
+              "Upcoming/recent events tracked: 1."
+            ],
+            "risks": [
+              "Risk headline: AI chip export restrictions stay in focus (regulatory)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:32.013775Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "confidence_pct": 59.46
+      },
+      "market_snapshot": {
+        "regime": "risk_on",
+        "score": 70.76,
+        "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "as_of": "2026-07-05T19:39:32.002853Z",
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:32.002846Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        },
+        "indicators": [
+          {
+            "symbol": "SPY",
+            "name": "S&P 500 ETF Proxy",
+            "close": 824.06,
+            "sma_50": 707.77,
+            "sma_200": 703.53,
+            "return_20d_pct": 16.32,
+            "return_60d_pct": 28.66,
+            "distance_to_sma_50_pct": 16.43,
+            "distance_to_sma_200_pct": 17.13,
+            "rsi_14": 97.14,
+            "trend_status": "uptrend",
+            "score": 81.83,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 16.3%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "QQQ",
+            "name": "Nasdaq 100 ETF Proxy",
+            "close": 537.09,
+            "sma_50": 467.77,
+            "sma_200": 462.07,
+            "return_20d_pct": 13.16,
+            "return_60d_pct": 36.4,
+            "distance_to_sma_50_pct": 14.82,
+            "distance_to_sma_200_pct": 16.24,
+            "rsi_14": 86.39,
+            "trend_status": "uptrend",
+            "score": 80.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 13.2%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "ACWI",
+            "name": "Global Equities Proxy",
+            "close": 141.71,
+            "sma_50": 128.55,
+            "sma_200": 133.06,
+            "return_20d_pct": 9.55,
+            "return_60d_pct": 18.79,
+            "distance_to_sma_50_pct": 10.23,
+            "distance_to_sma_200_pct": 6.5,
+            "rsi_14": 93.86,
+            "trend_status": "mixed",
+            "score": 68.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 below SMA200.",
+              "20d return 9.6%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "VIX",
+            "name": "Volatility Index Proxy",
+            "close": 25.22,
+            "sma_50": 15.94,
+            "sma_200": 14.14,
+            "return_20d_pct": 20.97,
+            "return_60d_pct": 152.7,
+            "distance_to_sma_50_pct": 58.25,
+            "distance_to_sma_200_pct": 78.34,
+            "rsi_14": 92.95,
+            "trend_status": "hostile",
+            "score": 30.41,
+            "reasons": [
+              "Volatility proxy at 25.22."
+            ],
+            "risks": [
+              "Volatility is elevated; reduce new risk positions.",
+              "Volatility has risen quickly over 20 sessions."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          }
+        ],
+        "component_scores": {
+          "trend": 72.82,
+          "breadth": 100.0,
+          "momentum": 76.78,
+          "volatility": 30.41
+        },
+        "trade_permission": "normal_new_trades_allowed",
+        "position_size_multiplier": 1.0,
+        "warnings": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50.",
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions.",
+          "Market regime is based on bundled sample history, not current live data."
+        ]
+      },
+      "portfolio_fit": {
+        "score": 74.0,
+        "classification": "swing_only",
+        "max_position_eur": 4827.84,
+        "advisory_notes": [
+          "High ATR suggests using only tactical swing exposure.",
+          "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,828."
+        ],
+        "warnings": [
+          "Technology/AI exposure must be checked against current portfolio before execution."
+        ],
+        "exposure_after_trade": {
+          "sector:Semiconductors": 5.0,
+          "theme:AI Compute": 5.0
+        },
+        "suggested_offset_actions": []
+      },
+      "trade_plan": {
+        "currency": "USD",
+        "strategy": "momentum_pullback",
+        "current_price": 128.0,
+        "entry_low": 124.48,
+        "entry_high": 129.0,
+        "do_not_chase_above": 136.04,
+        "stop_loss": 115.64,
+        "take_profit_1": 151.06,
+        "take_profit_2": 163.76,
+        "take_profit_3": 179.8,
+        "reward_risk_ratio": 1.65,
+        "holding_period": "2-8 weeks. Review after TP1, after loss of EMA20/EMA50, or if market regime deteriorates.",
+        "notes": [
+          "Chart setup: momentum_pullback; trend: bullish; structure: mixed.",
+          "Entry, stop and targets are chart-derived planning levels, not orders.",
+          "Manual review is required before any real-world action.",
+          "Momentum pullback: preferred entry is near EMA20/support, not after an extended move.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "Price is below EMA20.",
+          "20-day return is negative (-1.8%)."
+        ]
+      },
+      "chart_context": {
+        "symbol": "NVDA",
+        "current_price": 128.0,
+        "ema_20": 128.31,
+        "ema_50": 128.04,
+        "sma_200": 117.61,
+        "rsi_14": 46.32,
+        "atr_14": 10.05,
+        "atr_pct": 7.85,
+        "return_20d_pct": -1.8,
+        "return_60d_pct": 1.55,
+        "distance_to_ema_20_pct": -0.24,
+        "distance_to_ema_50_pct": -0.03,
+        "distance_to_sma_200_pct": 8.84,
+        "swing_low_20": 122.17,
+        "swing_high_20": 137.65,
+        "support_1": 122.17,
+        "support_2": 120.04,
+        "resistance_1": 137.65,
+        "resistance_2": 140.62,
+        "volume_ratio_20d": 1.16,
+        "trend_status": "bullish",
+        "market_structure": "mixed",
+        "setup_type": "momentum_pullback",
+        "score": 78.3,
+        "reasons": [
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "RSI is in the preferred constructive range.",
+          "Market structure is mixed.",
+          "Momentum pullback candidate: bullish trend and price near EMA20."
+        ],
+        "risks": [
+          "Price is below EMA20.",
+          "20-day return is negative (-1.8%)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_asset_sample+chart_engine",
+          "as_of": "2026-07-05T19:39:32.013667Z",
+          "issues": [
+            "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+          ]
+        }
+      },
+      "catalyst_context": {
+        "symbol": "NVDA",
+        "score": 69.88,
+        "news_count": 3,
+        "average_sentiment": 0.237,
+        "average_relevance": 84.67,
+        "average_impact": 79.67,
+        "primary_catalyst": "NVIDIA data center demand remains strong",
+        "catalyst_type": "mixed",
+        "event_types": [
+          "demand",
+          "regulatory",
+          "sector_rotation"
+        ],
+        "upcoming_events": [
+          {
+            "symbol": "NVDA",
+            "event_type": "earnings",
+            "event_date": "2026-08-26",
+            "description": "Expected quarterly earnings window; AI demand and margin commentary are central catalysts.",
+            "importance": "high",
+            "source": "sample",
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "news": [
+          {
+            "symbol": "NVDA",
+            "title": "NVIDIA data center demand remains strong",
+            "summary": "Sample item: data center demand and AI accelerator order flow remain a positive catalyst.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/nvda-demand",
+            "published_at": "2026-07-05T08:10:00Z",
+            "category": "company",
+            "event_type": "demand",
+            "sentiment_score": 0.64,
+            "relevance_score": 92.0,
+            "impact_score": 90.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "demand"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "NVDA",
+            "title": "Semiconductor sector leads market breadth",
+            "summary": "Sample item: semiconductor leadership supports momentum but raises crowding risk.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/semis-breadth",
+            "published_at": "2026-07-02T14:00:00Z",
+            "category": "sector",
+            "event_type": "sector_rotation",
+            "sentiment_score": 0.45,
+            "relevance_score": 84.0,
+            "impact_score": 78.0,
+            "risk_flag": false,
+            "topics": [
+              "sector",
+              "sector_rotation"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "NVDA",
+            "title": "AI chip export restrictions stay in focus",
+            "summary": "Sample item: export controls remain a portfolio risk flag for high-beta semiconductor exposure.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/nvda-export",
+            "published_at": "2026-07-04T15:20:00Z",
+            "category": "company",
+            "event_type": "regulatory",
+            "sentiment_score": -0.38,
+            "relevance_score": 78.0,
+            "impact_score": 71.0,
+            "risk_flag": true,
+            "topics": [
+              "company",
+              "regulatory"
+            ],
+            "risk_flags": [
+              "regulatory"
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "positive_count": 2,
+        "negative_count": 1,
+        "risk_flag_count": 1,
+        "reasons": [
+          "Primary catalyst: NVIDIA data center demand remains strong (Atlas Sample News).",
+          "Average news sentiment is positive (0.24).",
+          "News relevance is high (85/100).",
+          "Catalyst impact is high (80/100).",
+          "Upcoming/recent events tracked: 1."
+        ],
+        "risks": [
+          "Risk headline: AI chip export restrictions stay in focus (regulatory)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:32.013775Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      "fundamental_context": {
+        "symbol": "NVDA",
+        "profile": {
+          "symbol": "NVDA",
+          "name": "NVIDIA Corporation",
+          "asset_class": "stock",
+          "sector": "Semiconductors",
+          "industry": "GPUs and Accelerated Computing",
+          "theme": "AI Semiconductors",
+          "country": "US",
+          "exchange": "NASDAQ",
+          "currency": "USD",
+          "isin": "US67066G1040",
+          "wkn": "918422",
+          "website": "https://www.nvidia.com",
+          "description": "Accelerated computing and AI semiconductor leader",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967901Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "metrics": {
+          "symbol": "NVDA",
+          "market_cap_usd": 3950000000000.0,
+          "revenue_growth_yoy_pct": 74.0,
+          "eps_growth_yoy_pct": 68.0,
+          "gross_margin_pct": 75.1,
+          "operating_margin_pct": 62.0,
+          "net_margin_pct": 55.0,
+          "roe_pct": 96.0,
+          "roic_pct": 58.0,
+          "debt_to_equity": 0.18,
+          "free_cash_flow_yield_pct": 1.5,
+          "pe_ttm": 58.0,
+          "forward_pe": 42.0,
+          "peg_ratio": 1.4,
+          "dividend_yield_pct": 0.1,
+          "beta": 1.78,
+          "insider_ownership_pct": 4.2,
+          "institutional_ownership_pct": 66.0,
+          "analyst_revision_score": 90.0,
+          "earnings_date": "2026-08-26",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967901Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "quality_score": 74.0,
+        "growth_score": 100.0,
+        "profitability_score": 100.0,
+        "balance_sheet_score": 83.0,
+        "valuation_score": 70.0,
+        "ownership_score": 76.03,
+        "overall_score": 86.73,
+        "classification": "atlas_quality_leader",
+        "reasons": [
+          "Growth metrics are above Atlas baseline.",
+          "Margins/returns indicate strong profitability.",
+          "Balance sheet risk appears controlled in sample data.",
+          "Valuation is acceptable relative to growth/quality.",
+          "Analyst revision score is supportive."
+        ],
+        "risks": [
+          "Beta is high at 1.78; position sizing should be conservative."
+        ],
+        "missing_fields": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_fundamentals",
+          "as_of": "2026-07-05T19:39:31.967901Z",
+          "issues": [
+            "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+          ]
+        }
+      },
+      "identifier_match": null,
+      "key_reasons": [
+        "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "Growth metrics are above Atlas baseline.",
+        "EMA20 is above EMA50.",
+        "Pullback is inside the preferred trend zone near EMA20/support.",
+        "Risk score uses ATR proxy, configured risk budget and market-regime multiplier.",
+        "High ATR suggests using only tactical swing exposure."
+      ],
+      "key_risks": [
+        "RSI is extended; avoid chasing.",
+        "Beta is high at 1.78; position sizing should be conservative.",
+        "Price is below EMA20.",
+        "Price is below EMA20.",
+        "High volatility; position size should be reduced or actively managed.",
+        "Technology/AI exposure must be checked against current portfolio before execution."
+      ],
+      "ai_statement": "Atlas deterministic view: NVDA is classified as watch with score 73.5. Main reasons: Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.; Growth metrics are above Atlas baseline.; EMA20 is above EMA50.. Fundamentals: classification atlas_quality_leader, overall 87/100, growth 100/100, profitability 100/100, valuation 70/100. Catalyst context: primary catalyst: NVIDIA data center demand remains strong; catalyst type: mixed; news items: 3; avg sentiment: 0.24. Main risks: RSI is extended; avoid chasing.; Beta is high at 1.78; position sizing should be conservative.; Price is below EMA20.. Sprint 4 uses chart-aware OHLCV, source-aware sample news/catalyst data and normalized sample fundamentals; it is not investment advice. Any entry, stop-loss or take-profit level requires manual validation with live sources before action.",
+      "back_book_summary": {
+        "status": "tracked",
+        "created_at": "2026-07-05T19:39:32.013891+00:00",
+        "symbol": "NVDA",
+        "name": "Nvidia",
+        "intent": "swing",
+        "strategy": "momentum_pullback",
+        "verdict": "watch",
+        "atlas_score": 73.46,
+        "portfolio_fit": 74.0,
+        "entry": [
+          124.48,
+          129.0
+        ],
+        "stop_loss": 115.64,
+        "take_profit": [
+          151.06,
+          163.76,
+          179.8
+        ],
+        "do_not_chase_above": 136.04,
+        "reward_risk_ratio": 1.65,
+        "chart": {
+          "trend_status": "bullish",
+          "setup_type": "momentum_pullback",
+          "rsi_14": 46.32,
+          "atr_pct": 7.85,
+          "support_1": 122.17,
+          "resistance_1": 137.65
+        },
+        "catalyst": {
+          "score": 69.88,
+          "news_count": 3,
+          "primary_catalyst": "NVIDIA data center demand remains strong",
+          "risk_flags": 1
+        },
+        "fundamentals": {
+          "overall_score": 86.73,
+          "classification": "atlas_quality_leader",
+          "quality_score": 74.0,
+          "growth_score": 100.0,
+          "valuation_score": 70.0
+        },
+        "review_checkpoints": {
+          "after_7_days": "pending",
+          "after_14_days": "pending",
+          "after_30_days": "pending",
+          "after_60_days": "pending"
+        }
+      },
+      "data_quality": {
+        "level": "sample",
+        "provider": "csv_asset_sample",
+        "as_of": "2026-07-05T19:39:31.979725Z",
+        "issues": [
+          "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+        ]
+      },
+      "created_at": "2026-07-05T19:39:32.013891Z"
+    },
+    {
+      "asset": {
+        "symbol": "CRWD",
+        "name": "CrowdStrike",
+        "asset_class": "stock",
+        "sector": "Cybersecurity",
+        "theme": "Cybersecurity",
+        "currency": "USD",
+        "isin": "US22788C1053",
+        "wkn": "A2PK2R"
+      },
+      "intent": "swing",
+      "verdict": "avoid",
+      "strategy": "momentum_pullback",
+      "atlas_score": 71.85,
+      "score_breakdown": {
+        "total_score": 71.85,
+        "factors": [
+          {
+            "name": "market",
+            "score": 70.76,
+            "weight": 18.0,
+            "reasons": [
+              "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:32.002846Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "name": "fundamentals",
+            "score": 70.76,
+            "weight": 12.0,
+            "reasons": [
+              "Growth metrics are above Atlas baseline.",
+              "Balance sheet risk appears controlled in sample data.",
+              "Gross margin is high (75.5%).",
+              "Revenue growth is positive (26.5% YoY).",
+              "Debt-to-equity is controlled (0.28)."
+            ],
+            "risks": [
+              "Valuation score is weak; avoid chasing extended entries.",
+              "PEG appears elevated (3.80); valuation discipline required.",
+              "Forward P/E is high (88.0); multiple compression risk.",
+              "Net margin is thin (4.0%)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_fundamentals",
+              "as_of": "2026-07-05T19:39:31.968020Z",
+              "issues": [
+                "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+              ]
+            }
+          },
+          {
+            "name": "momentum",
+            "score": 81.98,
+            "weight": 24.0,
+            "reasons": [
+              "EMA20 is above EMA50.",
+              "EMA50 is above SMA200.",
+              "Price is above SMA200.",
+              "RSI is in the preferred constructive range."
+            ],
+            "risks": [
+              "Price is below EMA20.",
+              "20-day return is negative (-2.1%)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.023042Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "chart_timing",
+            "score": 93.0,
+            "weight": 24.0,
+            "reasons": [
+              "Pullback is inside the preferred trend zone near EMA20/support.",
+              "Distance to EMA20 is inside the preferred entry band."
+            ],
+            "risks": [
+              "Price is below EMA20.",
+              "20-day return is negative (-2.1%)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.023042Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "risk",
+            "score": 70.0,
+            "weight": 12.0,
+            "reasons": [
+              "Risk score uses ATR proxy, configured risk budget and market-regime multiplier."
+            ],
+            "risks": [
+              "High volatility; position size should be reduced or actively managed."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979766Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "portfolio_fit",
+            "score": 74.0,
+            "weight": 8.0,
+            "reasons": [
+              "High ATR suggests using only tactical swing exposure.",
+              "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 5,060."
+            ],
+            "risks": [
+              "Technology/AI exposure must be checked against current portfolio before execution."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979766Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "catalyst_ai",
+            "score": 65.55,
+            "weight": 2.0,
+            "reasons": [
+              "Primary catalyst: Cybersecurity budgets stay resilient (Atlas Sample News).",
+              "Average news sentiment is positive (0.22).",
+              "News relevance is high (75/100).",
+              "Upcoming/recent events tracked: 1.",
+              "At least one high-importance event is in the catalyst calendar."
+            ],
+            "risks": [
+              "Risk headline: High-growth software valuations remain sensitive to rates (rates)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:32.023140Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "confidence_pct": 57.85
+      },
+      "market_snapshot": {
+        "regime": "risk_on",
+        "score": 70.76,
+        "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "as_of": "2026-07-05T19:39:32.002853Z",
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:32.002846Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        },
+        "indicators": [
+          {
+            "symbol": "SPY",
+            "name": "S&P 500 ETF Proxy",
+            "close": 824.06,
+            "sma_50": 707.77,
+            "sma_200": 703.53,
+            "return_20d_pct": 16.32,
+            "return_60d_pct": 28.66,
+            "distance_to_sma_50_pct": 16.43,
+            "distance_to_sma_200_pct": 17.13,
+            "rsi_14": 97.14,
+            "trend_status": "uptrend",
+            "score": 81.83,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 16.3%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "QQQ",
+            "name": "Nasdaq 100 ETF Proxy",
+            "close": 537.09,
+            "sma_50": 467.77,
+            "sma_200": 462.07,
+            "return_20d_pct": 13.16,
+            "return_60d_pct": 36.4,
+            "distance_to_sma_50_pct": 14.82,
+            "distance_to_sma_200_pct": 16.24,
+            "rsi_14": 86.39,
+            "trend_status": "uptrend",
+            "score": 80.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 13.2%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "ACWI",
+            "name": "Global Equities Proxy",
+            "close": 141.71,
+            "sma_50": 128.55,
+            "sma_200": 133.06,
+            "return_20d_pct": 9.55,
+            "return_60d_pct": 18.79,
+            "distance_to_sma_50_pct": 10.23,
+            "distance_to_sma_200_pct": 6.5,
+            "rsi_14": 93.86,
+            "trend_status": "mixed",
+            "score": 68.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 below SMA200.",
+              "20d return 9.6%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "VIX",
+            "name": "Volatility Index Proxy",
+            "close": 25.22,
+            "sma_50": 15.94,
+            "sma_200": 14.14,
+            "return_20d_pct": 20.97,
+            "return_60d_pct": 152.7,
+            "distance_to_sma_50_pct": 58.25,
+            "distance_to_sma_200_pct": 78.34,
+            "rsi_14": 92.95,
+            "trend_status": "hostile",
+            "score": 30.41,
+            "reasons": [
+              "Volatility proxy at 25.22."
+            ],
+            "risks": [
+              "Volatility is elevated; reduce new risk positions.",
+              "Volatility has risen quickly over 20 sessions."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          }
+        ],
+        "component_scores": {
+          "trend": 72.82,
+          "breadth": 100.0,
+          "momentum": 76.78,
+          "volatility": 30.41
+        },
+        "trade_permission": "normal_new_trades_allowed",
+        "position_size_multiplier": 1.0,
+        "warnings": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50.",
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions.",
+          "Market regime is based on bundled sample history, not current live data."
+        ]
+      },
+      "portfolio_fit": {
+        "score": 74.0,
+        "classification": "swing_only",
+        "max_position_eur": 5059.97,
+        "advisory_notes": [
+          "High ATR suggests using only tactical swing exposure.",
+          "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 5,060."
+        ],
+        "warnings": [
+          "Technology/AI exposure must be checked against current portfolio before execution."
+        ],
+        "exposure_after_trade": {
+          "sector:Cybersecurity": 5.0,
+          "theme:Cybersecurity": 5.0
+        },
+        "suggested_offset_actions": []
+      },
+      "trade_plan": {
+        "currency": "USD",
+        "strategy": "momentum_pullback",
+        "current_price": 392.0,
+        "entry_low": 381.92,
+        "entry_high": 394.88,
+        "do_not_chase_above": 415.03,
+        "stop_loss": 355.86,
+        "take_profit_1": 459.27,
+        "take_profit_2": 496.34,
+        "take_profit_3": 543.16,
+        "reward_risk_ratio": 1.65,
+        "holding_period": "2-8 weeks. Review after TP1, after loss of EMA20/EMA50, or if market regime deteriorates.",
+        "notes": [
+          "Chart setup: momentum_pullback; trend: bullish; structure: mixed.",
+          "Entry, stop and targets are chart-derived planning levels, not orders.",
+          "Manual review is required before any real-world action.",
+          "Momentum pullback: preferred entry is near EMA20/support, not after an extended move.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "Price is below EMA20.",
+          "20-day return is negative (-2.1%)."
+        ]
+      },
+      "chart_context": {
+        "symbol": "CRWD",
+        "current_price": 392.0,
+        "ema_20": 400.35,
+        "ema_50": 395.24,
+        "sma_200": 355.29,
+        "rsi_14": 46.38,
+        "atr_14": 28.79,
+        "atr_pct": 7.34,
+        "return_20d_pct": -2.12,
+        "return_60d_pct": 8.79,
+        "distance_to_ema_20_pct": -2.09,
+        "distance_to_ema_50_pct": -0.82,
+        "distance_to_sma_200_pct": 10.33,
+        "swing_low_20": 374.57,
+        "swing_high_20": 433.0,
+        "support_1": 374.57,
+        "support_2": 345.55,
+        "resistance_1": 433.0,
+        "resistance_2": 433.0,
+        "volume_ratio_20d": 0.83,
+        "trend_status": "bullish",
+        "market_structure": "mixed",
+        "setup_type": "momentum_pullback",
+        "score": 78.98,
+        "reasons": [
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "RSI is in the preferred constructive range.",
+          "Market structure is mixed.",
+          "Momentum pullback candidate: bullish trend and price near EMA20."
+        ],
+        "risks": [
+          "Price is below EMA20.",
+          "20-day return is negative (-2.1%)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_asset_sample+chart_engine",
+          "as_of": "2026-07-05T19:39:32.023042Z",
+          "issues": [
+            "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+          ]
+        }
+      },
+      "catalyst_context": {
+        "symbol": "CRWD",
+        "score": 65.55,
+        "news_count": 3,
+        "average_sentiment": 0.223,
+        "average_relevance": 74.67,
+        "average_impact": 69.67,
+        "primary_catalyst": "Cybersecurity budgets stay resilient",
+        "catalyst_type": "mixed",
+        "event_types": [
+          "peer_readthrough",
+          "rates",
+          "sector_demand"
+        ],
+        "upcoming_events": [
+          {
+            "symbol": "CRWD",
+            "event_type": "earnings",
+            "event_date": "2026-08-28",
+            "description": "Expected quarterly earnings window; ARR growth and security demand matter.",
+            "importance": "high",
+            "source": "sample",
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "news": [
+          {
+            "symbol": "CRWD",
+            "title": "Cybersecurity budgets stay resilient",
+            "summary": "Sample item: enterprise cybersecurity spending remains a strong secular tailwind.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/crwd-cyber",
+            "published_at": "2026-07-05T08:30:00Z",
+            "category": "company",
+            "event_type": "sector_demand",
+            "sentiment_score": 0.5,
+            "relevance_score": 86.0,
+            "impact_score": 80.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "sector_demand"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "CRWD",
+            "title": "Security software peers report strong renewal rates",
+            "summary": "Sample item: renewal-rate strength supports recurring revenue assumptions in cybersecurity.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/crwd-renewals",
+            "published_at": "2026-07-04T13:10:00Z",
+            "category": "sector",
+            "event_type": "peer_readthrough",
+            "sentiment_score": 0.39,
+            "relevance_score": 72.0,
+            "impact_score": 68.0,
+            "risk_flag": false,
+            "topics": [
+              "sector",
+              "peer_readthrough"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "CRWD",
+            "title": "High-growth software valuations remain sensitive to rates",
+            "summary": "Sample item: valuation sensitivity is a risk if bond yields move higher.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/crwd-rates",
+            "published_at": "2026-07-03T10:25:00Z",
+            "category": "macro",
+            "event_type": "rates",
+            "sentiment_score": -0.22,
+            "relevance_score": 66.0,
+            "impact_score": 61.0,
+            "risk_flag": true,
+            "topics": [
+              "macro",
+              "rates"
+            ],
+            "risk_flags": [
+              "rates"
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "positive_count": 2,
+        "negative_count": 1,
+        "risk_flag_count": 1,
+        "reasons": [
+          "Primary catalyst: Cybersecurity budgets stay resilient (Atlas Sample News).",
+          "Average news sentiment is positive (0.22).",
+          "News relevance is high (75/100).",
+          "Upcoming/recent events tracked: 1.",
+          "At least one high-importance event is in the catalyst calendar."
+        ],
+        "risks": [
+          "Risk headline: High-growth software valuations remain sensitive to rates (rates)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:32.023140Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      "fundamental_context": {
+        "symbol": "CRWD",
+        "profile": {
+          "symbol": "CRWD",
+          "name": "CrowdStrike Holdings Inc.",
+          "asset_class": "stock",
+          "sector": "Cybersecurity",
+          "industry": "Endpoint Security",
+          "theme": "Cyber AI",
+          "country": "US",
+          "exchange": "NASDAQ",
+          "currency": "USD",
+          "isin": "US22788C1053",
+          "wkn": "A2PK2R",
+          "website": "https://www.crowdstrike.com",
+          "description": "Cloud-native cybersecurity platform",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.968020Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "metrics": {
+          "symbol": "CRWD",
+          "market_cap_usd": 95000000000.0,
+          "revenue_growth_yoy_pct": 26.5,
+          "eps_growth_yoy_pct": 33.0,
+          "gross_margin_pct": 75.5,
+          "operating_margin_pct": 8.5,
+          "net_margin_pct": 4.0,
+          "roe_pct": 7.5,
+          "roic_pct": 6.2,
+          "debt_to_equity": 0.28,
+          "free_cash_flow_yield_pct": 0.8,
+          "pe_ttm": 520.0,
+          "forward_pe": 88.0,
+          "peg_ratio": 3.8,
+          "dividend_yield_pct": 0.0,
+          "beta": 1.35,
+          "insider_ownership_pct": 5.1,
+          "institutional_ownership_pct": 73.0,
+          "analyst_revision_score": 70.0,
+          "earnings_date": "2026-08-28",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.968020Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "quality_score": 70.0,
+        "growth_score": 100.0,
+        "profitability_score": 63.79,
+        "balance_sheet_score": 83.0,
+        "valuation_score": 34.0,
+        "ownership_score": 70.78,
+        "overall_score": 72.14,
+        "classification": "acceptable",
+        "reasons": [
+          "Growth metrics are above Atlas baseline.",
+          "Balance sheet risk appears controlled in sample data."
+        ],
+        "risks": [
+          "Valuation score is weak; avoid chasing extended entries."
+        ],
+        "missing_fields": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_fundamentals",
+          "as_of": "2026-07-05T19:39:31.968020Z",
+          "issues": [
+            "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+          ]
+        }
+      },
+      "identifier_match": null,
+      "key_reasons": [
+        "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "Growth metrics are above Atlas baseline.",
+        "EMA20 is above EMA50.",
+        "Pullback is inside the preferred trend zone near EMA20/support.",
+        "Risk score uses ATR proxy, configured risk budget and market-regime multiplier.",
+        "High ATR suggests using only tactical swing exposure."
+      ],
+      "key_risks": [
+        "RSI is extended; avoid chasing.",
+        "Valuation score is weak; avoid chasing extended entries.",
+        "Price is below EMA20.",
+        "Price is below EMA20.",
+        "High volatility; position size should be reduced or actively managed.",
+        "Technology/AI exposure must be checked against current portfolio before execution."
+      ],
+      "ai_statement": "Atlas deterministic view: CRWD is classified as avoid with score 71.8. Main reasons: Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.; Growth metrics are above Atlas baseline.; EMA20 is above EMA50.. Fundamentals: classification acceptable, overall 72/100, growth 100/100, profitability 64/100, valuation 34/100. Catalyst context: primary catalyst: Cybersecurity budgets stay resilient; catalyst type: mixed; news items: 3; avg sentiment: 0.22. Main risks: RSI is extended; avoid chasing.; Valuation score is weak; avoid chasing extended entries.; Price is below EMA20.. Sprint 4 uses chart-aware OHLCV, source-aware sample news/catalyst data and normalized sample fundamentals; it is not investment advice. Any entry, stop-loss or take-profit level requires manual validation with live sources before action.",
+      "back_book_summary": {
+        "status": "tracked",
+        "created_at": "2026-07-05T19:39:32.023237+00:00",
+        "symbol": "CRWD",
+        "name": "CrowdStrike",
+        "intent": "swing",
+        "strategy": "momentum_pullback",
+        "verdict": "avoid",
+        "atlas_score": 71.85,
+        "portfolio_fit": 74.0,
+        "entry": [
+          381.92,
+          394.88
+        ],
+        "stop_loss": 355.86,
+        "take_profit": [
+          459.27,
+          496.34,
+          543.16
+        ],
+        "do_not_chase_above": 415.03,
+        "reward_risk_ratio": 1.65,
+        "chart": {
+          "trend_status": "bullish",
+          "setup_type": "momentum_pullback",
+          "rsi_14": 46.38,
+          "atr_pct": 7.34,
+          "support_1": 374.57,
+          "resistance_1": 433.0
+        },
+        "catalyst": {
+          "score": 65.55,
+          "news_count": 3,
+          "primary_catalyst": "Cybersecurity budgets stay resilient",
+          "risk_flags": 1
+        },
+        "fundamentals": {
+          "overall_score": 72.14,
+          "classification": "acceptable",
+          "quality_score": 70.0,
+          "growth_score": 100.0,
+          "valuation_score": 34.0
+        },
+        "review_checkpoints": {
+          "after_7_days": "pending",
+          "after_14_days": "pending",
+          "after_30_days": "pending",
+          "after_60_days": "pending"
+        }
+      },
+      "data_quality": {
+        "level": "sample",
+        "provider": "csv_asset_sample",
+        "as_of": "2026-07-05T19:39:31.979766Z",
+        "issues": [
+          "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+        ]
+      },
+      "created_at": "2026-07-05T19:39:32.023237Z"
+    },
+    {
+      "asset": {
+        "symbol": "V",
+        "name": "Visa",
+        "asset_class": "stock",
+        "sector": "Payments",
+        "theme": "Finance & Payment",
+        "currency": "USD",
+        "isin": "US92826C8394",
+        "wkn": "A0NC7B"
+      },
+      "intent": "swing",
+      "verdict": "avoid",
+      "strategy": "trend_continuation",
+      "atlas_score": 70.05,
+      "score_breakdown": {
+        "total_score": 70.05,
+        "factors": [
+          {
+            "name": "market",
+            "score": 70.76,
+            "weight": 18.0,
+            "reasons": [
+              "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:32.002846Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "name": "fundamentals",
+            "score": 81.1,
+            "weight": 12.0,
+            "reasons": [
+              "Large, liquid security with strong quality profile.",
+              "Margins/returns indicate strong profitability.",
+              "Analyst revision score is supportive.",
+              "Gross margin is high (80.2%).",
+              "Operating margin is strong (66.0%).",
+              "ROE is attractive (48.0%)."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_fundamentals",
+              "as_of": "2026-07-05T19:39:31.967954Z",
+              "issues": [
+                "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+              ]
+            }
+          },
+          {
+            "name": "momentum",
+            "score": 86.55,
+            "weight": 24.0,
+            "reasons": [
+              "Price is above EMA20.",
+              "EMA20 is above EMA50.",
+              "EMA50 is above SMA200.",
+              "Price is above SMA200."
+            ],
+            "risks": [
+              "RSI is potentially overheated.",
+              "Entry quality is weaker than a pullback; use do-not-chase discipline."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.018398Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "chart_timing",
+            "score": 66.0,
+            "weight": 24.0,
+            "reasons": [
+              "Trend is constructive, but entry is less optimal than a pullback."
+            ],
+            "risks": [
+              "RSI is elevated; staged entry or waiting is preferred.",
+              "RSI is potentially overheated.",
+              "Entry quality is weaker than a pullback; use do-not-chase discipline."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.018398Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "risk",
+            "score": 85.0,
+            "weight": 12.0,
+            "reasons": [
+              "Risk score uses ATR proxy, configured risk budget and market-regime multiplier."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979746Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "portfolio_fit",
+            "score": 82.0,
+            "weight": 8.0,
+            "reasons": [
+              "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,486."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979746Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "catalyst_ai",
+            "score": 60.66,
+            "weight": 2.0,
+            "reasons": [
+              "Primary catalyst: Visa payment volumes remain stable (Atlas Sample News).",
+              "Average news sentiment is neutral/mixed (0.14).",
+              "News relevance is high (73/100).",
+              "Upcoming/recent events tracked: 1."
+            ],
+            "risks": [
+              "Risk headline: Regulatory scrutiny of card fees continues (regulatory)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:32.018493Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "confidence_pct": 56.05
+      },
+      "market_snapshot": {
+        "regime": "risk_on",
+        "score": 70.76,
+        "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "as_of": "2026-07-05T19:39:32.002853Z",
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:32.002846Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        },
+        "indicators": [
+          {
+            "symbol": "SPY",
+            "name": "S&P 500 ETF Proxy",
+            "close": 824.06,
+            "sma_50": 707.77,
+            "sma_200": 703.53,
+            "return_20d_pct": 16.32,
+            "return_60d_pct": 28.66,
+            "distance_to_sma_50_pct": 16.43,
+            "distance_to_sma_200_pct": 17.13,
+            "rsi_14": 97.14,
+            "trend_status": "uptrend",
+            "score": 81.83,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 16.3%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "QQQ",
+            "name": "Nasdaq 100 ETF Proxy",
+            "close": 537.09,
+            "sma_50": 467.77,
+            "sma_200": 462.07,
+            "return_20d_pct": 13.16,
+            "return_60d_pct": 36.4,
+            "distance_to_sma_50_pct": 14.82,
+            "distance_to_sma_200_pct": 16.24,
+            "rsi_14": 86.39,
+            "trend_status": "uptrend",
+            "score": 80.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 13.2%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "ACWI",
+            "name": "Global Equities Proxy",
+            "close": 141.71,
+            "sma_50": 128.55,
+            "sma_200": 133.06,
+            "return_20d_pct": 9.55,
+            "return_60d_pct": 18.79,
+            "distance_to_sma_50_pct": 10.23,
+            "distance_to_sma_200_pct": 6.5,
+            "rsi_14": 93.86,
+            "trend_status": "mixed",
+            "score": 68.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 below SMA200.",
+              "20d return 9.6%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "VIX",
+            "name": "Volatility Index Proxy",
+            "close": 25.22,
+            "sma_50": 15.94,
+            "sma_200": 14.14,
+            "return_20d_pct": 20.97,
+            "return_60d_pct": 152.7,
+            "distance_to_sma_50_pct": 58.25,
+            "distance_to_sma_200_pct": 78.34,
+            "rsi_14": 92.95,
+            "trend_status": "hostile",
+            "score": 30.41,
+            "reasons": [
+              "Volatility proxy at 25.22."
+            ],
+            "risks": [
+              "Volatility is elevated; reduce new risk positions.",
+              "Volatility has risen quickly over 20 sessions."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          }
+        ],
+        "component_scores": {
+          "trend": 72.82,
+          "breadth": 100.0,
+          "momentum": 76.78,
+          "volatility": 30.41
+        },
+        "trade_permission": "normal_new_trades_allowed",
+        "position_size_multiplier": 1.0,
+        "warnings": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50.",
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions.",
+          "Market regime is based on bundled sample history, not current live data."
+        ]
+      },
+      "portfolio_fit": {
+        "score": 82.0,
+        "classification": "acceptable",
+        "max_position_eur": 4486.05,
+        "advisory_notes": [
+          "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,486."
+        ],
+        "warnings": [],
+        "exposure_after_trade": {
+          "sector:Payments": 5.0,
+          "theme:Finance & Payment": 5.0
+        },
+        "suggested_offset_actions": []
+      },
+      "trade_plan": {
+        "currency": "USD",
+        "strategy": "trend_continuation",
+        "current_price": 275.0,
+        "entry_low": 269.68,
+        "entry_high": 276.52,
+        "do_not_chase_above": 281.08,
+        "stop_loss": 245.7,
+        "take_profit_1": 327.37,
+        "take_profit_2": 356.65,
+        "take_profit_3": 393.64,
+        "reward_risk_ratio": 1.65,
+        "holding_period": "2-6 weeks. Use smaller size if entry is extended above EMA20.",
+        "notes": [
+          "Chart setup: trend_continuation; trend: bullish; structure: higher_high_higher_low.",
+          "Entry, stop and targets are chart-derived planning levels, not orders.",
+          "Manual review is required before any real-world action.",
+          "Trend continuation: acceptable only if do-not-chase level is respected.",
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "RSI is potentially overheated.",
+          "Entry quality is weaker than a pullback; use do-not-chase discipline."
+        ]
+      },
+      "chart_context": {
+        "symbol": "V",
+        "current_price": 275.0,
+        "ema_20": 265.72,
+        "ema_50": 259.95,
+        "sma_200": 250.96,
+        "rsi_14": 88.86,
+        "atr_14": 7.6,
+        "atr_pct": 2.76,
+        "return_20d_pct": 7.28,
+        "return_60d_pct": 5.86,
+        "distance_to_ema_20_pct": 3.49,
+        "distance_to_ema_50_pct": 5.79,
+        "distance_to_sma_200_pct": 9.58,
+        "swing_low_20": 251.78,
+        "swing_high_20": 277.22,
+        "support_1": 251.78,
+        "support_2": 239.7,
+        "resistance_1": 277.22,
+        "resistance_2": 277.22,
+        "volume_ratio_20d": 1.04,
+        "trend_status": "bullish",
+        "market_structure": "higher_high_higher_low",
+        "setup_type": "trend_continuation",
+        "score": 83.55,
+        "reasons": [
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "20-day return is positive (7.3%).",
+          "Market structure shows higher high and higher low.",
+          "Trend-continuation candidate: trend is strong but not deeply pulled back."
+        ],
+        "risks": [
+          "RSI is potentially overheated.",
+          "Entry quality is weaker than a pullback; use do-not-chase discipline."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_asset_sample+chart_engine",
+          "as_of": "2026-07-05T19:39:32.018398Z",
+          "issues": [
+            "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+          ]
+        }
+      },
+      "catalyst_context": {
+        "symbol": "V",
+        "score": 60.66,
+        "news_count": 3,
+        "average_sentiment": 0.143,
+        "average_relevance": 73.33,
+        "average_impact": 66.33,
+        "primary_catalyst": "Visa payment volumes remain stable",
+        "catalyst_type": "mixed",
+        "event_types": [
+          "macro",
+          "operating_update",
+          "regulatory"
+        ],
+        "upcoming_events": [
+          {
+            "symbol": "V",
+            "event_type": "earnings",
+            "event_date": "2026-07-24",
+            "description": "Expected quarterly earnings window; payment volume and regulatory commentary matter.",
+            "importance": "medium",
+            "source": "sample",
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "news": [
+          {
+            "symbol": "V",
+            "title": "Visa payment volumes remain stable",
+            "summary": "Sample item: payment-volume resilience supports quality and defensive growth characteristics.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/visa-volumes",
+            "published_at": "2026-07-05T06:55:00Z",
+            "category": "company",
+            "event_type": "operating_update",
+            "sentiment_score": 0.42,
+            "relevance_score": 82.0,
+            "impact_score": 72.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "operating_update"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "V",
+            "title": "Payment networks benefit from travel spending",
+            "summary": "Sample item: cross-border and travel spending provide incremental support.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/visa-travel",
+            "published_at": "2026-07-04T11:20:00Z",
+            "category": "company",
+            "event_type": "macro",
+            "sentiment_score": 0.31,
+            "relevance_score": 70.0,
+            "impact_score": 62.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "macro"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "V",
+            "title": "Regulatory scrutiny of card fees continues",
+            "summary": "Sample item: interchange-fee regulation remains a known long-term risk.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/visa-fees",
+            "published_at": "2026-07-03T17:05:00Z",
+            "category": "company",
+            "event_type": "regulatory",
+            "sentiment_score": -0.3,
+            "relevance_score": 68.0,
+            "impact_score": 65.0,
+            "risk_flag": true,
+            "topics": [
+              "company",
+              "regulatory"
+            ],
+            "risk_flags": [
+              "regulatory"
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "positive_count": 2,
+        "negative_count": 1,
+        "risk_flag_count": 1,
+        "reasons": [
+          "Primary catalyst: Visa payment volumes remain stable (Atlas Sample News).",
+          "Average news sentiment is neutral/mixed (0.14).",
+          "News relevance is high (73/100).",
+          "Upcoming/recent events tracked: 1."
+        ],
+        "risks": [
+          "Risk headline: Regulatory scrutiny of card fees continues (regulatory)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:32.018493Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      "fundamental_context": {
+        "symbol": "V",
+        "profile": {
+          "symbol": "V",
+          "name": "Visa Inc.",
+          "asset_class": "stock",
+          "sector": "Payments",
+          "industry": "Payment Networks",
+          "theme": "Finance Payment",
+          "country": "US",
+          "exchange": "NYSE",
+          "currency": "USD",
+          "isin": "US92826C8394",
+          "wkn": "A0NC7B",
+          "website": "https://www.visa.com",
+          "description": "Global payment network",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967954Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "metrics": {
+          "symbol": "V",
+          "market_cap_usd": 695000000000.0,
+          "revenue_growth_yoy_pct": 10.0,
+          "eps_growth_yoy_pct": 12.6,
+          "gross_margin_pct": 80.2,
+          "operating_margin_pct": 66.0,
+          "net_margin_pct": 53.5,
+          "roe_pct": 48.0,
+          "roic_pct": 31.0,
+          "debt_to_equity": 0.62,
+          "free_cash_flow_yield_pct": 3.1,
+          "pe_ttm": 33.0,
+          "forward_pe": 27.0,
+          "peg_ratio": 2.0,
+          "dividend_yield_pct": 0.8,
+          "beta": 0.92,
+          "insider_ownership_pct": 0.8,
+          "institutional_ownership_pct": 84.0,
+          "analyst_revision_score": 75.0,
+          "earnings_date": "2026-07-23",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967954Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "quality_score": 92.0,
+        "growth_score": 69.21,
+        "profitability_score": 99.95,
+        "balance_sheet_score": 73.0,
+        "valuation_score": 66.0,
+        "ownership_score": 68.67,
+        "overall_score": 81.59,
+        "classification": "quality_candidate",
+        "reasons": [
+          "Large, liquid security with strong quality profile.",
+          "Margins/returns indicate strong profitability.",
+          "Analyst revision score is supportive."
+        ],
+        "risks": [],
+        "missing_fields": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_fundamentals",
+          "as_of": "2026-07-05T19:39:31.967954Z",
+          "issues": [
+            "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+          ]
+        }
+      },
+      "identifier_match": null,
+      "key_reasons": [
+        "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "Large, liquid security with strong quality profile.",
+        "Price is above EMA20.",
+        "Trend is constructive, but entry is less optimal than a pullback.",
+        "Risk score uses ATR proxy, configured risk budget and market-regime multiplier.",
+        "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,486."
+      ],
+      "key_risks": [
+        "RSI is extended; avoid chasing.",
+        "RSI is potentially overheated.",
+        "RSI is elevated; staged entry or waiting is preferred.",
+        "Risk headline: Regulatory scrutiny of card fees continues (regulatory)."
+      ],
+      "ai_statement": "Atlas deterministic view: V is classified as avoid with score 70.0. Main reasons: Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.; Large, liquid security with strong quality profile.; Price is above EMA20.. Fundamentals: classification quality_candidate, overall 82/100, growth 69/100, profitability 100/100, valuation 66/100. Catalyst context: primary catalyst: Visa payment volumes remain stable; catalyst type: mixed; news items: 3; avg sentiment: 0.14. Main risks: RSI is extended; avoid chasing.; RSI is potentially overheated.; RSI is elevated; staged entry or waiting is preferred.. Sprint 4 uses chart-aware OHLCV, source-aware sample news/catalyst data and normalized sample fundamentals; it is not investment advice. Any entry, stop-loss or take-profit level requires manual validation with live sources before action.",
+      "back_book_summary": {
+        "status": "tracked",
+        "created_at": "2026-07-05T19:39:32.018603+00:00",
+        "symbol": "V",
+        "name": "Visa",
+        "intent": "swing",
+        "strategy": "trend_continuation",
+        "verdict": "avoid",
+        "atlas_score": 70.05,
+        "portfolio_fit": 82.0,
+        "entry": [
+          269.68,
+          276.52
+        ],
+        "stop_loss": 245.7,
+        "take_profit": [
+          327.37,
+          356.65,
+          393.64
+        ],
+        "do_not_chase_above": 281.08,
+        "reward_risk_ratio": 1.65,
+        "chart": {
+          "trend_status": "bullish",
+          "setup_type": "trend_continuation",
+          "rsi_14": 88.86,
+          "atr_pct": 2.76,
+          "support_1": 251.78,
+          "resistance_1": 277.22
+        },
+        "catalyst": {
+          "score": 60.66,
+          "news_count": 3,
+          "primary_catalyst": "Visa payment volumes remain stable",
+          "risk_flags": 1
+        },
+        "fundamentals": {
+          "overall_score": 81.59,
+          "classification": "quality_candidate",
+          "quality_score": 92.0,
+          "growth_score": 69.21,
+          "valuation_score": 66.0
+        },
+        "review_checkpoints": {
+          "after_7_days": "pending",
+          "after_14_days": "pending",
+          "after_30_days": "pending",
+          "after_60_days": "pending"
+        }
+      },
+      "data_quality": {
+        "level": "sample",
+        "provider": "csv_asset_sample",
+        "as_of": "2026-07-05T19:39:31.979746Z",
+        "issues": [
+          "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+        ]
+      },
+      "created_at": "2026-07-05T19:39:32.018603Z"
+    },
+    {
+      "asset": {
+        "symbol": "MSFT",
+        "name": "Microsoft",
+        "asset_class": "stock",
+        "sector": "Software",
+        "theme": "AI Infrastructure",
+        "currency": "USD",
+        "isin": "US5949181045",
+        "wkn": "870747"
+      },
+      "intent": "swing",
+      "verdict": "avoid",
+      "strategy": "trend_continuation",
+      "atlas_score": 69.65,
+      "score_breakdown": {
+        "total_score": 69.65,
+        "factors": [
+          {
+            "name": "market",
+            "score": 70.76,
+            "weight": 18.0,
+            "reasons": [
+              "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:32.002846Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "name": "fundamentals",
+            "score": 82.06,
+            "weight": 12.0,
+            "reasons": [
+              "Large, liquid security with strong quality profile.",
+              "Growth metrics are above Atlas baseline.",
+              "Margins/returns indicate strong profitability.",
+              "Balance sheet risk appears controlled in sample data.",
+              "Analyst revision score is supportive.",
+              "Gross margin is high (69.4%)."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_fundamentals",
+              "as_of": "2026-07-05T19:39:31.967730Z",
+              "issues": [
+                "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+              ]
+            }
+          },
+          {
+            "name": "momentum",
+            "score": 86.67,
+            "weight": 24.0,
+            "reasons": [
+              "Price is above EMA20.",
+              "EMA20 is above EMA50.",
+              "EMA50 is above SMA200.",
+              "Price is above SMA200."
+            ],
+            "risks": [
+              "RSI is potentially overheated.",
+              "Entry quality is weaker than a pullback; use do-not-chase discipline."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.008594Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "chart_timing",
+            "score": 66.0,
+            "weight": 24.0,
+            "reasons": [
+              "Trend is constructive, but entry is less optimal than a pullback."
+            ],
+            "risks": [
+              "RSI is elevated; staged entry or waiting is preferred.",
+              "RSI is potentially overheated.",
+              "Entry quality is weaker than a pullback; use do-not-chase discipline."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.008594Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "risk",
+            "score": 85.0,
+            "weight": 12.0,
+            "reasons": [
+              "Risk score uses ATR proxy, configured risk budget and market-regime multiplier."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979681Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "portfolio_fit",
+            "score": 74.0,
+            "weight": 8.0,
+            "reasons": [
+              "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 3,871."
+            ],
+            "risks": [
+              "Technology/AI exposure must be checked against current portfolio before execution."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979681Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "catalyst_ai",
+            "score": 65.03,
+            "weight": 2.0,
+            "reasons": [
+              "Primary catalyst: Microsoft expands Azure AI capacity (Atlas Sample News).",
+              "Average news sentiment is positive (0.21).",
+              "News relevance is high (75/100).",
+              "Upcoming/recent events tracked: 1.",
+              "At least one high-importance event is in the catalyst calendar."
+            ],
+            "risks": [
+              "Risk headline: Regulatory debate on cloud concentration remains active (regulatory)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:32.008745Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "confidence_pct": 55.65
+      },
+      "market_snapshot": {
+        "regime": "risk_on",
+        "score": 70.76,
+        "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "as_of": "2026-07-05T19:39:32.002853Z",
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:32.002846Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        },
+        "indicators": [
+          {
+            "symbol": "SPY",
+            "name": "S&P 500 ETF Proxy",
+            "close": 824.06,
+            "sma_50": 707.77,
+            "sma_200": 703.53,
+            "return_20d_pct": 16.32,
+            "return_60d_pct": 28.66,
+            "distance_to_sma_50_pct": 16.43,
+            "distance_to_sma_200_pct": 17.13,
+            "rsi_14": 97.14,
+            "trend_status": "uptrend",
+            "score": 81.83,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 16.3%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "QQQ",
+            "name": "Nasdaq 100 ETF Proxy",
+            "close": 537.09,
+            "sma_50": 467.77,
+            "sma_200": 462.07,
+            "return_20d_pct": 13.16,
+            "return_60d_pct": 36.4,
+            "distance_to_sma_50_pct": 14.82,
+            "distance_to_sma_200_pct": 16.24,
+            "rsi_14": 86.39,
+            "trend_status": "uptrend",
+            "score": 80.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 13.2%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "ACWI",
+            "name": "Global Equities Proxy",
+            "close": 141.71,
+            "sma_50": 128.55,
+            "sma_200": 133.06,
+            "return_20d_pct": 9.55,
+            "return_60d_pct": 18.79,
+            "distance_to_sma_50_pct": 10.23,
+            "distance_to_sma_200_pct": 6.5,
+            "rsi_14": 93.86,
+            "trend_status": "mixed",
+            "score": 68.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 below SMA200.",
+              "20d return 9.6%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "VIX",
+            "name": "Volatility Index Proxy",
+            "close": 25.22,
+            "sma_50": 15.94,
+            "sma_200": 14.14,
+            "return_20d_pct": 20.97,
+            "return_60d_pct": 152.7,
+            "distance_to_sma_50_pct": 58.25,
+            "distance_to_sma_200_pct": 78.34,
+            "rsi_14": 92.95,
+            "trend_status": "hostile",
+            "score": 30.41,
+            "reasons": [
+              "Volatility proxy at 25.22."
+            ],
+            "risks": [
+              "Volatility is elevated; reduce new risk positions.",
+              "Volatility has risen quickly over 20 sessions."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          }
+        ],
+        "component_scores": {
+          "trend": 72.82,
+          "breadth": 100.0,
+          "momentum": 76.78,
+          "volatility": 30.41
+        },
+        "trade_permission": "normal_new_trades_allowed",
+        "position_size_multiplier": 1.0,
+        "warnings": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50.",
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions.",
+          "Market regime is based on bundled sample history, not current live data."
+        ]
+      },
+      "portfolio_fit": {
+        "score": 74.0,
+        "classification": "acceptable",
+        "max_position_eur": 3871.22,
+        "advisory_notes": [
+          "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 3,871."
+        ],
+        "warnings": [
+          "Technology/AI exposure must be checked against current portfolio before execution."
+        ],
+        "exposure_after_trade": {
+          "sector:Software": 5.0,
+          "theme:AI Infrastructure": 5.0
+        },
+        "suggested_offset_actions": []
+      },
+      "trade_plan": {
+        "currency": "USD",
+        "strategy": "trend_continuation",
+        "current_price": 465.0,
+        "entry_low": 452.23,
+        "entry_high": 468.65,
+        "do_not_chase_above": 479.59,
+        "stop_loss": 408.12,
+        "take_profit_1": 568.52,
+        "take_profit_2": 626.03,
+        "take_profit_3": 698.66,
+        "reward_risk_ratio": 1.65,
+        "holding_period": "2-6 weeks. Use smaller size if entry is extended above EMA20.",
+        "notes": [
+          "Chart setup: trend_continuation; trend: bullish; structure: higher_high_higher_low.",
+          "Entry, stop and targets are chart-derived planning levels, not orders.",
+          "Manual review is required before any real-world action.",
+          "Trend continuation: acceptable only if do-not-chase level is respected.",
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "RSI is potentially overheated.",
+          "Entry quality is weaker than a pullback; use do-not-chase discipline."
+        ]
+      },
+      "chart_context": {
+        "symbol": "MSFT",
+        "current_price": 465.0,
+        "ema_20": 448.65,
+        "ema_50": 436.75,
+        "sma_200": 410.48,
+        "rsi_14": 79.05,
+        "atr_14": 18.24,
+        "atr_pct": 3.92,
+        "return_20d_pct": 7.03,
+        "return_60d_pct": 7.56,
+        "distance_to_ema_20_pct": 3.65,
+        "distance_to_ema_50_pct": 6.47,
+        "distance_to_sma_200_pct": 13.28,
+        "swing_low_20": 422.71,
+        "swing_high_20": 476.45,
+        "support_1": 422.71,
+        "support_2": 396.43,
+        "resistance_1": 476.45,
+        "resistance_2": 476.45,
+        "volume_ratio_20d": 0.89,
+        "trend_status": "bullish",
+        "market_structure": "higher_high_higher_low",
+        "setup_type": "trend_continuation",
+        "score": 83.67,
+        "reasons": [
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "20-day return is positive (7.0%).",
+          "Market structure shows higher high and higher low.",
+          "Trend-continuation candidate: trend is strong but not deeply pulled back."
+        ],
+        "risks": [
+          "RSI is potentially overheated.",
+          "Entry quality is weaker than a pullback; use do-not-chase discipline."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_asset_sample+chart_engine",
+          "as_of": "2026-07-05T19:39:32.008594Z",
+          "issues": [
+            "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+          ]
+        }
+      },
+      "catalyst_context": {
+        "symbol": "MSFT",
+        "score": 65.03,
+        "news_count": 3,
+        "average_sentiment": 0.207,
+        "average_relevance": 75.0,
+        "average_impact": 68.67,
+        "primary_catalyst": "Microsoft expands Azure AI capacity",
+        "catalyst_type": "mixed",
+        "event_types": [
+          "analyst",
+          "product",
+          "regulatory"
+        ],
+        "upcoming_events": [
+          {
+            "symbol": "MSFT",
+            "event_type": "earnings",
+            "event_date": "2026-07-29",
+            "description": "Expected quarterly earnings window; review guidance and Azure/AI commentary.",
+            "importance": "high",
+            "source": "sample",
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "news": [
+          {
+            "symbol": "MSFT",
+            "title": "Microsoft expands Azure AI capacity",
+            "summary": "Sample item: Azure AI infrastructure expansion supports cloud and AI demand.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/msft-ai",
+            "published_at": "2026-07-05T07:30:00Z",
+            "category": "company",
+            "event_type": "product",
+            "sentiment_score": 0.52,
+            "relevance_score": 88.0,
+            "impact_score": 82.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "product"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "title": "Analysts highlight resilient enterprise software demand",
+            "summary": "Sample item: enterprise software checks remain constructive for Microsoft.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/msft-software",
+            "published_at": "2026-07-04T12:45:00Z",
+            "category": "company",
+            "event_type": "analyst",
+            "sentiment_score": 0.35,
+            "relevance_score": 74.0,
+            "impact_score": 66.0,
+            "risk_flag": false,
+            "topics": [
+              "company",
+              "analyst"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "MSFT",
+            "title": "Regulatory debate on cloud concentration remains active",
+            "summary": "Sample item: cloud market concentration remains a watch item for mega-cap platforms.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/msft-regulation",
+            "published_at": "2026-07-03T09:00:00Z",
+            "category": "company",
+            "event_type": "regulatory",
+            "sentiment_score": -0.25,
+            "relevance_score": 63.0,
+            "impact_score": 58.0,
+            "risk_flag": true,
+            "topics": [
+              "company",
+              "regulatory"
+            ],
+            "risk_flags": [
+              "regulatory"
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "positive_count": 2,
+        "negative_count": 1,
+        "risk_flag_count": 1,
+        "reasons": [
+          "Primary catalyst: Microsoft expands Azure AI capacity (Atlas Sample News).",
+          "Average news sentiment is positive (0.21).",
+          "News relevance is high (75/100).",
+          "Upcoming/recent events tracked: 1.",
+          "At least one high-importance event is in the catalyst calendar."
+        ],
+        "risks": [
+          "Risk headline: Regulatory debate on cloud concentration remains active (regulatory)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:32.008745Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      "fundamental_context": {
+        "symbol": "MSFT",
+        "profile": {
+          "symbol": "MSFT",
+          "name": "Microsoft Corporation",
+          "asset_class": "stock",
+          "sector": "Software",
+          "industry": "Infrastructure Software",
+          "theme": "AI Cloud",
+          "country": "US",
+          "exchange": "NASDAQ",
+          "currency": "USD",
+          "isin": "US5949181045",
+          "wkn": "870747",
+          "website": "https://www.microsoft.com",
+          "description": "Global software and cloud platform company",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967730Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "metrics": {
+          "symbol": "MSFT",
+          "market_cap_usd": 3800000000000.0,
+          "revenue_growth_yoy_pct": 15.6,
+          "eps_growth_yoy_pct": 18.2,
+          "gross_margin_pct": 69.4,
+          "operating_margin_pct": 44.6,
+          "net_margin_pct": 36.4,
+          "roe_pct": 36.0,
+          "roic_pct": 27.2,
+          "debt_to_equity": 0.35,
+          "free_cash_flow_yield_pct": 2.4,
+          "pe_ttm": 37.5,
+          "forward_pe": 31.8,
+          "peg_ratio": 2.1,
+          "dividend_yield_pct": 0.7,
+          "beta": 0.95,
+          "insider_ownership_pct": 1.5,
+          "institutional_ownership_pct": 72.0,
+          "analyst_revision_score": 82.0,
+          "earnings_date": "2026-07-29",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.967730Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "quality_score": 92.0,
+        "growth_score": 78.73,
+        "profitability_score": 87.7,
+        "balance_sheet_score": 83.0,
+        "valuation_score": 66.0,
+        "ownership_score": 71.36,
+        "overall_score": 82.15,
+        "classification": "quality_candidate",
+        "reasons": [
+          "Large, liquid security with strong quality profile.",
+          "Growth metrics are above Atlas baseline.",
+          "Margins/returns indicate strong profitability.",
+          "Balance sheet risk appears controlled in sample data.",
+          "Analyst revision score is supportive."
+        ],
+        "risks": [],
+        "missing_fields": [],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_fundamentals",
+          "as_of": "2026-07-05T19:39:31.967730Z",
+          "issues": [
+            "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+          ]
+        }
+      },
+      "identifier_match": null,
+      "key_reasons": [
+        "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "Large, liquid security with strong quality profile.",
+        "Price is above EMA20.",
+        "Trend is constructive, but entry is less optimal than a pullback.",
+        "Risk score uses ATR proxy, configured risk budget and market-regime multiplier.",
+        "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 3,871."
+      ],
+      "key_risks": [
+        "RSI is extended; avoid chasing.",
+        "RSI is potentially overheated.",
+        "RSI is elevated; staged entry or waiting is preferred.",
+        "Technology/AI exposure must be checked against current portfolio before execution.",
+        "Risk headline: Regulatory debate on cloud concentration remains active (regulatory)."
+      ],
+      "ai_statement": "Atlas deterministic view: MSFT is classified as avoid with score 69.7. Main reasons: Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.; Large, liquid security with strong quality profile.; Price is above EMA20.. Fundamentals: classification quality_candidate, overall 82/100, growth 79/100, profitability 88/100, valuation 66/100. Catalyst context: primary catalyst: Microsoft expands Azure AI capacity; catalyst type: mixed; news items: 3; avg sentiment: 0.21. Main risks: RSI is extended; avoid chasing.; RSI is potentially overheated.; RSI is elevated; staged entry or waiting is preferred.. Sprint 4 uses chart-aware OHLCV, source-aware sample news/catalyst data and normalized sample fundamentals; it is not investment advice. Any entry, stop-loss or take-profit level requires manual validation with live sources before action.",
+      "back_book_summary": {
+        "status": "tracked",
+        "created_at": "2026-07-05T19:39:32.008961+00:00",
+        "symbol": "MSFT",
+        "name": "Microsoft",
+        "intent": "swing",
+        "strategy": "trend_continuation",
+        "verdict": "avoid",
+        "atlas_score": 69.65,
+        "portfolio_fit": 74.0,
+        "entry": [
+          452.23,
+          468.65
+        ],
+        "stop_loss": 408.12,
+        "take_profit": [
+          568.52,
+          626.03,
+          698.66
+        ],
+        "do_not_chase_above": 479.59,
+        "reward_risk_ratio": 1.65,
+        "chart": {
+          "trend_status": "bullish",
+          "setup_type": "trend_continuation",
+          "rsi_14": 79.05,
+          "atr_pct": 3.92,
+          "support_1": 422.71,
+          "resistance_1": 476.45
+        },
+        "catalyst": {
+          "score": 65.03,
+          "news_count": 3,
+          "primary_catalyst": "Microsoft expands Azure AI capacity",
+          "risk_flags": 1
+        },
+        "fundamentals": {
+          "overall_score": 82.15,
+          "classification": "quality_candidate",
+          "quality_score": 92.0,
+          "growth_score": 78.73,
+          "valuation_score": 66.0
+        },
+        "review_checkpoints": {
+          "after_7_days": "pending",
+          "after_14_days": "pending",
+          "after_30_days": "pending",
+          "after_60_days": "pending"
+        }
+      },
+      "data_quality": {
+        "level": "sample",
+        "provider": "csv_asset_sample",
+        "as_of": "2026-07-05T19:39:31.979681Z",
+        "issues": [
+          "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+        ]
+      },
+      "created_at": "2026-07-05T19:39:32.008961Z"
+    },
+    {
+      "asset": {
+        "symbol": "XLE",
+        "name": "Energy Select Sector SPDR Fund",
+        "asset_class": "etf",
+        "sector": "Energy",
+        "theme": "Energy",
+        "currency": "USD",
+        "isin": "US81369Y5069",
+        "wkn": "989696"
+      },
+      "intent": "diversification",
+      "verdict": "avoid",
+      "strategy": "defensive_allocation",
+      "atlas_score": 68.28,
+      "score_breakdown": {
+        "total_score": 68.28,
+        "factors": [
+          {
+            "name": "market",
+            "score": 70.76,
+            "weight": 15.0,
+            "reasons": [
+              "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:32.002846Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "name": "fundamentals",
+            "score": 62.15,
+            "weight": 20.0,
+            "reasons": [
+              "Valuation is acceptable relative to growth/quality."
+            ],
+            "risks": [
+              "Growth score is below Atlas preference."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_fundamentals",
+              "as_of": "2026-07-05T19:39:31.968380Z",
+              "issues": [
+                "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+              ]
+            }
+          },
+          {
+            "name": "momentum",
+            "score": 88.49,
+            "weight": 20.0,
+            "reasons": [
+              "Price is above EMA20.",
+              "EMA20 is above EMA50.",
+              "EMA50 is above SMA200.",
+              "Price is above SMA200."
+            ],
+            "risks": [
+              "RSI is potentially overheated."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.027643Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "chart_timing",
+            "score": 72.0,
+            "weight": 15.0,
+            "reasons": [
+              "Price is near or above prior resistance with supportive volume."
+            ],
+            "risks": [
+              "RSI is elevated; staged entry or waiting is preferred.",
+              "RSI is potentially overheated."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample+chart_engine",
+              "as_of": "2026-07-05T19:39:32.027643Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "risk",
+            "score": 85.0,
+            "weight": 10.0,
+            "reasons": [
+              "Risk score uses ATR proxy, configured risk budget and market-regime multiplier."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979781Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "portfolio_fit",
+            "score": 82.0,
+            "weight": 15.0,
+            "reasons": [
+              "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,565."
+            ],
+            "risks": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_asset_sample",
+              "as_of": "2026-07-05T19:39:31.979781Z",
+              "issues": [
+                "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+              ]
+            }
+          },
+          {
+            "name": "catalyst_ai",
+            "score": 58.74,
+            "weight": 5.0,
+            "reasons": [
+              "Primary catalyst: Energy sector supported by supply discipline (Atlas Sample News).",
+              "Average news sentiment is neutral/mixed (0.10).",
+              "News relevance is high (70/100).",
+              "Upcoming/recent events tracked: 1."
+            ],
+            "risks": [
+              "Risk headline: Oil volatility increases around macro headlines (volatility)."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:32.027743Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "confidence_pct": 54.28
+      },
+      "market_snapshot": {
+        "regime": "risk_on",
+        "score": 70.76,
+        "summary": "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "as_of": "2026-07-05T19:39:32.002853Z",
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_benchmark_sample",
+          "as_of": "2026-07-05T19:39:32.002846Z",
+          "issues": [
+            "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+          ]
+        },
+        "indicators": [
+          {
+            "symbol": "SPY",
+            "name": "S&P 500 ETF Proxy",
+            "close": 824.06,
+            "sma_50": 707.77,
+            "sma_200": 703.53,
+            "return_20d_pct": 16.32,
+            "return_60d_pct": 28.66,
+            "distance_to_sma_50_pct": 16.43,
+            "distance_to_sma_200_pct": 17.13,
+            "rsi_14": 97.14,
+            "trend_status": "uptrend",
+            "score": 81.83,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 16.3%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "QQQ",
+            "name": "Nasdaq 100 ETF Proxy",
+            "close": 537.09,
+            "sma_50": 467.77,
+            "sma_200": 462.07,
+            "return_20d_pct": 13.16,
+            "return_60d_pct": 36.4,
+            "distance_to_sma_50_pct": 14.82,
+            "distance_to_sma_200_pct": 16.24,
+            "rsi_14": 86.39,
+            "trend_status": "uptrend",
+            "score": 80.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 above SMA200.",
+              "20d return 13.2%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "ACWI",
+            "name": "Global Equities Proxy",
+            "close": 141.71,
+            "sma_50": 128.55,
+            "sma_200": 133.06,
+            "return_20d_pct": 9.55,
+            "return_60d_pct": 18.79,
+            "distance_to_sma_50_pct": 10.23,
+            "distance_to_sma_200_pct": 6.5,
+            "rsi_14": 93.86,
+            "trend_status": "mixed",
+            "score": 68.25,
+            "reasons": [
+              "Above SMA50.",
+              "Above SMA200.",
+              "SMA50 below SMA200.",
+              "20d return 9.6%."
+            ],
+            "risks": [
+              "RSI is extended; avoid chasing.",
+              "Short-term market may be extended above SMA50."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          },
+          {
+            "symbol": "VIX",
+            "name": "Volatility Index Proxy",
+            "close": 25.22,
+            "sma_50": 15.94,
+            "sma_200": 14.14,
+            "return_20d_pct": 20.97,
+            "return_60d_pct": 152.7,
+            "distance_to_sma_50_pct": 58.25,
+            "distance_to_sma_200_pct": 78.34,
+            "rsi_14": 92.95,
+            "trend_status": "hostile",
+            "score": 30.41,
+            "reasons": [
+              "Volatility proxy at 25.22."
+            ],
+            "risks": [
+              "Volatility is elevated; reduce new risk positions.",
+              "Volatility has risen quickly over 20 sessions."
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_benchmark_sample",
+              "as_of": "2026-07-05T19:39:31.993785Z",
+              "issues": [
+                "Sprint 1 fallback uses bundled benchmark_history.csv. Use yfinance/live provider for current market data."
+              ]
+            }
+          }
+        ],
+        "component_scores": {
+          "trend": 72.82,
+          "breadth": 100.0,
+          "momentum": 76.78,
+          "volatility": 30.41
+        },
+        "trade_permission": "normal_new_trades_allowed",
+        "position_size_multiplier": 1.0,
+        "warnings": [
+          "RSI is extended; avoid chasing.",
+          "Short-term market may be extended above SMA50.",
+          "Volatility is elevated; reduce new risk positions.",
+          "Volatility has risen quickly over 20 sessions.",
+          "Market regime is based on bundled sample history, not current live data."
+        ]
+      },
+      "portfolio_fit": {
+        "score": 82.0,
+        "classification": "acceptable",
+        "max_position_eur": 4564.86,
+        "advisory_notes": [
+          "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,565."
+        ],
+        "warnings": [],
+        "exposure_after_trade": {
+          "sector:Energy": 5.0,
+          "theme:Energy": 5.0
+        },
+        "suggested_offset_actions": []
+      },
+      "trade_plan": {
+        "currency": "USD",
+        "strategy": "defensive_allocation",
+        "current_price": 94.0,
+        "entry_low": 91.84,
+        "entry_high": 94.31,
+        "do_not_chase_above": 96.46,
+        "stop_loss": 83.98,
+        "take_profit_1": 111.36,
+        "take_profit_2": 121.17,
+        "take_profit_3": 133.57,
+        "reward_risk_ratio": 1.65,
+        "holding_period": "2-12 weeks or portfolio diversification sleeve. Rebalance against total allocation.",
+        "notes": [
+          "Chart setup: breakout; trend: bullish; structure: higher_high_higher_low.",
+          "Entry, stop and targets are chart-derived planning levels, not orders.",
+          "Manual review is required before any real-world action.",
+          "Defensive allocation: position sizing should consider diversification value, not only chart score.",
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "RSI is potentially overheated."
+        ]
+      },
+      "chart_context": {
+        "symbol": "XLE",
+        "current_price": 94.0,
+        "ema_20": 90.61,
+        "ema_50": 89.49,
+        "sma_200": 87.56,
+        "rsi_14": 94.25,
+        "atr_14": 3.08,
+        "atr_pct": 3.28,
+        "return_20d_pct": 7.2,
+        "return_60d_pct": 1.94,
+        "distance_to_ema_20_pct": 3.74,
+        "distance_to_ema_50_pct": 5.04,
+        "distance_to_sma_200_pct": 7.35,
+        "swing_low_20": 86.44,
+        "swing_high_20": 95.22,
+        "support_1": 86.44,
+        "support_2": 83.45,
+        "resistance_1": 95.22,
+        "resistance_2": 95.22,
+        "volume_ratio_20d": 1.1,
+        "trend_status": "bullish",
+        "market_structure": "higher_high_higher_low",
+        "setup_type": "breakout",
+        "score": 85.49,
+        "reasons": [
+          "Price is above EMA20.",
+          "EMA20 is above EMA50.",
+          "EMA50 is above SMA200.",
+          "Price is above SMA200.",
+          "20-day return is positive (7.2%).",
+          "Market structure shows higher high and higher low.",
+          "Breakout candidate: price is pressing prior resistance with volume support."
+        ],
+        "risks": [
+          "RSI is potentially overheated."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_asset_sample+chart_engine",
+          "as_of": "2026-07-05T19:39:32.027643Z",
+          "issues": [
+            "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+          ]
+        }
+      },
+      "catalyst_context": {
+        "symbol": "XLE",
+        "score": 58.74,
+        "news_count": 3,
+        "average_sentiment": 0.103,
+        "average_relevance": 70.0,
+        "average_impact": 65.33,
+        "primary_catalyst": "Energy sector supported by supply discipline",
+        "catalyst_type": "mixed",
+        "event_types": [
+          "commodity",
+          "income",
+          "volatility"
+        ],
+        "upcoming_events": [
+          {
+            "symbol": "XLE",
+            "event_type": "macro",
+            "event_date": "2026-07-23",
+            "description": "Energy sector sensitivity to oil inventory and macro demand data.",
+            "importance": "medium",
+            "source": "sample",
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "news": [
+          {
+            "symbol": "XLE",
+            "title": "Energy sector supported by supply discipline",
+            "summary": "Sample item: supply discipline and stable demand support energy-sector cash flows.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/xle-supply",
+            "published_at": "2026-07-05T09:05:00Z",
+            "category": "sector",
+            "event_type": "commodity",
+            "sentiment_score": 0.34,
+            "relevance_score": 77.0,
+            "impact_score": 70.0,
+            "risk_flag": false,
+            "topics": [
+              "sector",
+              "commodity"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "XLE",
+            "title": "Oil volatility increases around macro headlines",
+            "summary": "Sample item: oil price swings remain the main tactical risk for energy exposure.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/xle-volatility",
+            "published_at": "2026-07-04T16:40:00Z",
+            "category": "sector",
+            "event_type": "volatility",
+            "sentiment_score": -0.28,
+            "relevance_score": 71.0,
+            "impact_score": 68.0,
+            "risk_flag": true,
+            "topics": [
+              "sector",
+              "volatility"
+            ],
+            "risk_flags": [
+              "volatility"
+            ],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          },
+          {
+            "symbol": "XLE",
+            "title": "Energy dividend quality remains attractive",
+            "summary": "Sample item: cash-return discipline supports defensive allocation use cases.",
+            "source": "Atlas Sample News",
+            "url": "https://example.com/xle-dividend",
+            "published_at": "2026-07-02T08:45:00Z",
+            "category": "sector",
+            "event_type": "income",
+            "sentiment_score": 0.25,
+            "relevance_score": 62.0,
+            "impact_score": 58.0,
+            "risk_flag": false,
+            "topics": [
+              "sector",
+              "income"
+            ],
+            "risk_flags": [],
+            "data_quality": {
+              "level": "sample",
+              "provider": "csv_sample_news",
+              "as_of": "2026-07-05T19:39:31.979862Z",
+              "issues": [
+                "Offline sample news/events. Not live news."
+              ]
+            }
+          }
+        ],
+        "positive_count": 2,
+        "negative_count": 1,
+        "risk_flag_count": 1,
+        "reasons": [
+          "Primary catalyst: Energy sector supported by supply discipline (Atlas Sample News).",
+          "Average news sentiment is neutral/mixed (0.10).",
+          "News relevance is high (70/100).",
+          "Upcoming/recent events tracked: 1."
+        ],
+        "risks": [
+          "Risk headline: Oil volatility increases around macro headlines (volatility)."
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_news",
+          "as_of": "2026-07-05T19:39:32.027743Z",
+          "issues": [
+            "Offline sample news/events. Not live news."
+          ]
+        }
+      },
+      "fundamental_context": {
+        "symbol": "XLE",
+        "profile": {
+          "symbol": "XLE",
+          "name": "Energy Select Sector SPDR Fund",
+          "asset_class": "etf",
+          "sector": "Energy",
+          "industry": "Sector ETF",
+          "theme": "Energy ETF",
+          "country": "US",
+          "exchange": "NYSEARCA",
+          "currency": "USD",
+          "isin": "US81369Y5069",
+          "wkn": "989820",
+          "website": "https://www.ssga.com",
+          "description": "Energy sector ETF",
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.968380Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "metrics": {
+          "symbol": "XLE",
+          "market_cap_usd": 38000000000.0,
+          "revenue_growth_yoy_pct": 0.0,
+          "eps_growth_yoy_pct": 0.0,
+          "gross_margin_pct": null,
+          "operating_margin_pct": null,
+          "net_margin_pct": null,
+          "roe_pct": null,
+          "roic_pct": null,
+          "debt_to_equity": null,
+          "free_cash_flow_yield_pct": null,
+          "pe_ttm": null,
+          "forward_pe": 3.1,
+          "peg_ratio": 1.05,
+          "dividend_yield_pct": null,
+          "beta": null,
+          "insider_ownership_pct": 50.0,
+          "institutional_ownership_pct": null,
+          "analyst_revision_score": null,
+          "earnings_date": null,
+          "data_quality": {
+            "level": "sample",
+            "provider": "csv_sample_fundamentals",
+            "as_of": "2026-07-05T19:39:31.968380Z",
+            "issues": [
+              "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+            ]
+          }
+        },
+        "quality_score": 60.0,
+        "growth_score": 50.0,
+        "profitability_score": 50.0,
+        "balance_sheet_score": 65.0,
+        "valuation_score": 90.0,
+        "ownership_score": 70.0,
+        "overall_score": 60.65,
+        "classification": "watch_only",
+        "reasons": [
+          "Valuation is acceptable relative to growth/quality."
+        ],
+        "risks": [
+          "Growth score is below Atlas preference."
+        ],
+        "missing_fields": [
+          "operating_margin_pct",
+          "roe_pct",
+          "roic_pct",
+          "debt_to_equity",
+          "analyst_revision_score"
+        ],
+        "data_quality": {
+          "level": "sample",
+          "provider": "csv_sample_fundamentals",
+          "as_of": "2026-07-05T19:39:31.968380Z",
+          "issues": [
+            "Sprint 4 sample fundamentals. Replace with licensed/live provider before real decisions."
+          ]
+        }
+      },
+      "identifier_match": null,
+      "key_reasons": [
+        "Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.",
+        "Valuation is acceptable relative to growth/quality.",
+        "Price is above EMA20.",
+        "Price is near or above prior resistance with supportive volume.",
+        "Risk score uses ATR proxy, configured risk budget and market-regime multiplier.",
+        "Position cap uses risk budget, default cap and market multiplier 1.00: EUR 4,565."
+      ],
+      "key_risks": [
+        "RSI is extended; avoid chasing.",
+        "Growth score is below Atlas preference.",
+        "RSI is potentially overheated.",
+        "RSI is elevated; staged entry or waiting is preferred.",
+        "Risk headline: Oil volatility increases around macro headlines (volatility)."
+      ],
+      "ai_statement": "Atlas deterministic view: XLE is classified as avoid with score 68.3. Main reasons: Risk-On: New trades are allowed, but Atlas still requires clean setups. Market score 71/100; trend 73, breadth 100, volatility 30. Strongest signal: SPY; weakest signal: VIX.; Valuation is acceptable relative to growth/quality.; Price is above EMA20.. Fundamentals: classification watch_only, overall 61/100, growth 50/100, profitability 50/100, valuation 90/100. Catalyst context: primary catalyst: Energy sector supported by supply discipline; catalyst type: mixed; news items: 3; avg sentiment: 0.10. Main risks: RSI is extended; avoid chasing.; Growth score is below Atlas preference.; RSI is potentially overheated.. Sprint 4 uses chart-aware OHLCV, source-aware sample news/catalyst data and normalized sample fundamentals; it is not investment advice. Any entry, stop-loss or take-profit level requires manual validation with live sources before action.",
+      "back_book_summary": {
+        "status": "tracked",
+        "created_at": "2026-07-05T19:39:32.027838+00:00",
+        "symbol": "XLE",
+        "name": "Energy Select Sector SPDR Fund",
+        "intent": "diversification",
+        "strategy": "defensive_allocation",
+        "verdict": "avoid",
+        "atlas_score": 68.28,
+        "portfolio_fit": 82.0,
+        "entry": [
+          91.84,
+          94.31
+        ],
+        "stop_loss": 83.98,
+        "take_profit": [
+          111.36,
+          121.17,
+          133.57
+        ],
+        "do_not_chase_above": 96.46,
+        "reward_risk_ratio": 1.65,
+        "chart": {
+          "trend_status": "bullish",
+          "setup_type": "breakout",
+          "rsi_14": 94.25,
+          "atr_pct": 3.28,
+          "support_1": 86.44,
+          "resistance_1": 95.22
+        },
+        "catalyst": {
+          "score": 58.74,
+          "news_count": 3,
+          "primary_catalyst": "Energy sector supported by supply discipline",
+          "risk_flags": 1
+        },
+        "fundamentals": {
+          "overall_score": 60.65,
+          "classification": "watch_only",
+          "quality_score": 60.0,
+          "growth_score": 50.0,
+          "valuation_score": 90.0
+        },
+        "review_checkpoints": {
+          "after_7_days": "pending",
+          "after_14_days": "pending",
+          "after_30_days": "pending",
+          "after_60_days": "pending"
+        }
+      },
+      "data_quality": {
+        "level": "sample",
+        "provider": "csv_asset_sample",
+        "as_of": "2026-07-05T19:39:31.979781Z",
+        "issues": [
+          "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+        ]
+      },
+      "created_at": "2026-07-05T19:39:32.027838Z"
+    }
+  ],
+  "actions": [
+    "Cash above target range. Advisory only: evaluate staged deployment of up to EUR 50,000 into Core ETF, real-estate reserve or high-conviction opportunities.",
+    "Satellite risk budget capped at EUR 50,000.",
+    "Portfolio warning: Cash is above target range by EUR 50,000.",
+    "Portfolio warning: Tech/AI proxy exposure is high at 52.6% versus 35.0% guideline.",
+    "Market catalysts: 69/100 from 3 sample news item(s).",
+    "Market permission: normal_new_trades_allowed; position multiplier 1.00.",
+    "Provider status: 5/5 ready; 0 missing API key(s); 0 disabled live provider(s).",
+    "Review entries, stops, take-profit levels, fundamentals and catalyst flags manually before any action."
+  ],
+  "executive_summary": [
+    "Market: risk_on (71/100), permission normal_new_trades_allowed.",
+    "FIRE: 15.8% funded; projected target year 2037.",
+    "Portfolio: EUR 190,000 tracked, cash 73.7%.",
+    "Candidates: 5 shown; no high-conviction trade today."
+  ],
+  "data_quality_notes": [
+    "Offline bundled OHLCV sample is active. Do not treat sample bars as live market data."
+  ],
+  "technical_mvp_version": "technical_mvp_0.1"
+}

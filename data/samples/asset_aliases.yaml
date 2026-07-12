@@ -1,0 +1,41 @@
+assets:
+  MSFT:
+    name: Microsoft Corporation
+    ticker: MSFT
+    asset_type: stock
+    currency: USD
+    sector: Technology
+    industry: Software
+    theme_tags: [software, ai, cloud]
+  NVDA:
+    name: NVIDIA Corporation
+    ticker: NVDA
+    asset_type: stock
+    currency: USD
+    sector: Technology
+    industry: Semiconductors
+    theme_tags: [ai, semiconductors]
+  V:
+    name: Visa Inc.
+    ticker: V
+    asset_type: stock
+    currency: USD
+    sector: Financial Services
+    industry: Payments
+    theme_tags: [finance, payment]
+  QQQ:
+    name: Invesco QQQ Trust
+    ticker: QQQ
+    asset_type: etf
+    currency: USD
+    sector: ETF
+    industry: Nasdaq 100 ETF
+    theme_tags: [etf, technology]
+  JEPQ:
+    name: JPMorgan Nasdaq Equity Premium Income ETF
+    ticker: JEPQ
+    asset_type: etf
+    currency: USD
+    sector: ETF
+    industry: Covered Call ETF
+    theme_tags: [etf, income, technology]

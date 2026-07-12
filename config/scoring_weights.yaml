@@ -1,0 +1,40 @@
+base_weights:
+  market: 15
+  fundamentals: 20
+  momentum: 20
+  chart_timing: 15
+  risk: 10
+  portfolio_fit: 15
+  catalyst_ai: 5
+
+intent_overrides:
+  swing:
+    market: 18
+    fundamentals: 12
+    momentum: 24
+    chart_timing: 24
+    risk: 12
+    portfolio_fit: 8
+    catalyst_ai: 2
+  core:
+    market: 8
+    fundamentals: 28
+    momentum: 12
+    chart_timing: 8
+    risk: 14
+    portfolio_fit: 22
+    catalyst_ai: 8
+  defensive:
+    market: 12
+    fundamentals: 16
+    momentum: 8
+    chart_timing: 10
+    risk: 22
+    portfolio_fit: 27
+    catalyst_ai: 5
+
+verdict_thresholds:
+  strong_buy: 90
+  buy: 82
+  watch: 72
+  avoid: 0
