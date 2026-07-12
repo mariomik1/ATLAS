@@ -6,4 +6,4 @@ def test_recommendation_serializes_to_json():
     payload = rec.model_dump(mode="json")
     assert payload["asset"]["symbol"] == "MSFT"
     assert payload["trade_plan"]["entry_low"] > 0
-    assert payload["data_quality"]["level"] == "sample"
+    assert payload["data_quality"]["level"] in {"sample", "delayed"}

@@ -50,13 +50,11 @@ safety:
   auto_trading_allowed: false
 
 asset_data:
-  provider: csv_sample        # csv_sample | yfinance | fmp | alphavantage | polygon
-  live_providers_enabled: false
-  csv_path: data/samples/asset_ohlcv.csv
-  min_history_bars: 220
-  cache_ttl_hours: 24
+  provider: yfinance        # csv_sample | yfinance | fmp | alphavantage | polygon
+  live_providers_enabled: true
   yfinance_period: 18mo
   yfinance_interval: 1d
+  cache_ttl_hours: 24
 
 news:
   provider: csv_sample        # csv_sample | marketaux | newsapi | fmp
