@@ -1,104 +1,247 @@
+from __future__ import annotations
+
+from typing import Any
+
 import pandas as pd
 import streamlit as st
 
 from atlas_core.orchestrator import AtlasOrchestrator
+from atlas_core.ui.theme import candidate_card, hero, inject_atlas_theme, metric_card, section
 
-st.title("Screener / Search")
-st.caption("Search by ticker, name, ISIN or WKN. Sprint 4 adds identifier search and normalized fundamentals.")
-orchestrator = AtlasOrchestrator()
-query = st.text_input("Search", value="MSFT")
-if query:
-    matches = orchestrator.search_assets(query)
-    if matches and matches.matches:
-        with st.expander("Identifier matches", expanded=True):
-            st.dataframe(
-                pd.DataFrame([m.model_dump(mode="json") for m in matches.matches])[
-                    ["symbol", "name", "asset_class", "isin", "wkn", "match_type", "confidence", "provider"]
-                ],
-                use_container_width=True,
-                hide_index=True,
+
+st.set_page_config(
+    page_title="Screener Search",
+    page_icon="🔎",
+    layout="wide",
+)
+
+inject_atlas_theme()
+
+
+DEFAULT_SYMBOLS = "V, MSFT, NVDA, CRWD, XLE"
+
+
+def normalize_symbols(raw: str) -> list[str]:
+    symbols: list[str] = []
+    for part in raw.replace("\n", ",").replace(";", ",").split(","):
+        symbol = part.strip().upper()
+        if symbol and symbol not in symbols:
+            symbols.append(symbol)
+    return symbols[:12]
+
+
+def analyze_symbols(symbols: list[str]) -> list[dict[str, Any]]:
+    orchestrator = AtlasOrchestrator()
+    results: list[dict[str, Any]] = []
+
+    for symbol in symbols:
+        try:
+            rec = orchestrator.analyze_query(symbol)
+            results.append(rec.model_dump(mode="json"))
+        except Exception as exc:
+            results.append(
+                {
+                    "asset": {"symbol": symbol},
+                    "recommendation": "neutral",
+                    "data_quality": {"level": "error"},
+                    "error": str(exc),
+                }
             )
-    rec = orchestrator.analyze_query(query)
-    if rec is None:
-        st.warning("No asset found in the current Sprint 4 sample identifier master.")
-    else:
-        tp = rec.trade_plan
-        cc = rec.chart_context
-        cat = rec.catalyst_context
-        fc = rec.fundamental_context
-        st.subheader(f"{rec.asset.symbol} - {rec.asset.name}")
-        col1, col2, col3, col4, col5, col6 = st.columns(6)
-        col1.metric("Atlas Score", rec.atlas_score)
-        col2.metric("Verdict", rec.verdict)
-        col3.metric("Portfolio Fit", rec.portfolio_fit.score)
-        col4.metric("Market", rec.market_snapshot.regime)
-        col5.metric("Fundamental", f"{fc.overall_score:.0f}/100" if fc else "n/a")
-        col6.metric("Catalyst", f"{cat.score:.0f}/100" if cat else "n/a")
-        st.write(rec.ai_statement)
 
-        if fc:
-            st.subheader("Fundamental Context")
-            f1, f2, f3, f4, f5, f6 = st.columns(6)
-            f1.metric("Overall", fc.overall_score)
-            f2.metric("Class", fc.classification)
-            f3.metric("Growth", fc.growth_score)
-            f4.metric("Profitability", fc.profitability_score)
-            f5.metric("Valuation", fc.valuation_score)
-            f6.metric("Balance", fc.balance_sheet_score)
-            if fc.profile:
-                st.write(f"Sector: **{fc.profile.sector}** | Industry: **{fc.profile.industry}** | Currency: **{fc.profile.currency}**")
-            if fc.metrics:
-                st.write(
-                    f"Market Cap: **{fc.metrics.market_cap_usd} USD** | Forward P/E: **{fc.metrics.forward_pe}** | "
-                    f"PEG: **{fc.metrics.peg_ratio}** | ROIC: **{fc.metrics.roic_pct}%** | Debt/Equity: **{fc.metrics.debt_to_equity}**"
-                )
-            col_a, col_b = st.columns(2)
-            with col_a:
-                st.write("**Fundamental Reasons**")
-                for item in fc.reasons:
-                    st.write(f"- {item}")
-            with col_b:
-                st.write("**Fundamental Risks**")
-                for item in fc.risks:
-                    st.write(f"- {item}")
+    return results
 
-        if cat:
-            st.subheader("Catalyst Context")
-            c1, c2, c3, c4 = st.columns(4)
-            c1.metric("Catalyst Score", cat.score)
-            c2.metric("Type", cat.catalyst_type)
-            c3.metric("News", cat.news_count)
-            c4.metric("Avg Sentiment", cat.average_sentiment)
-            st.write(f"Primary catalyst: **{cat.primary_catalyst or 'n/a'}**")
-            with st.expander("News and events"):
-                for news in cat.news:
-                    st.write(f"- **{news.title}** | source={news.source} | relevance={news.relevance_score} | sentiment={news.sentiment_score}")
-                    if news.summary:
-                        st.caption(news.summary)
-                if cat.upcoming_events:
-                    st.write("Events")
-                    for event in cat.upcoming_events:
-                        st.write(f"- {event.event_date}: {event.description} ({event.importance})")
 
-        if cc:
-            st.subheader("Chart Context")
-            c1, c2, c3, c4, c5 = st.columns(5)
-            c1.metric("Setup", cc.setup_type)
-            c2.metric("Trend", cc.trend_status)
-            c3.metric("RSI", cc.rsi_14)
-            c4.metric("ATR %", cc.atr_pct)
-            c5.metric("Chart Score", cc.score)
-            st.write(f"EMA20 / EMA50 / SMA200: **{cc.ema_20} / {cc.ema_50} / {cc.sma_200}**")
-            st.write(f"Support: **{cc.support_1} / {cc.support_2}** | Resistance: **{cc.resistance_1} / {cc.resistance_2}**")
-        if tp:
-            st.subheader("Trade Plan")
-            st.write(f"Entry: **{tp.entry_low} - {tp.entry_high} {tp.currency}**")
-            st.write(f"Stop-loss: **{tp.stop_loss} {tp.currency}**")
-            st.write(f"Take-profit: **{tp.take_profit_1} / {tp.take_profit_2} / {tp.take_profit_3} {tp.currency}**")
-            st.write(f"Do not chase above: **{tp.do_not_chase_above} {tp.currency}**")
-            st.write(f"CRV: **{tp.reward_risk_ratio}:1**")
-            with st.expander("Trade plan notes"):
-                for note in tp.notes:
-                    st.write(f"- {note}")
-        with st.expander("Full recommendation JSON"):
-            st.json(rec.model_dump(mode="json"))
+def symbol_of(payload: dict[str, Any]) -> str:
+    return payload.get("asset", {}).get("symbol", "UNKNOWN")
+
+
+def status_of(payload: dict[str, Any]) -> str:
+    return str(payload.get("recommendation", "neutral")).lower()
+
+
+def quality_of(payload: dict[str, Any]) -> str:
+    return payload.get("data_quality", {}).get("level", "unknown")
+
+
+def score_of(payload: dict[str, Any]) -> Any:
+    atlas_score = payload.get("atlas_score", payload.get("score", "n/a"))
+    if isinstance(atlas_score, dict):
+        return atlas_score.get("total_score", atlas_score.get("score", "n/a"))
+    return atlas_score
+
+
+def numeric_score(payload: dict[str, Any]) -> float:
+    try:
+        return float(score_of(payload))
+    except Exception:
+        return 0.0
+
+
+def entry_of(payload: dict[str, Any]) -> str:
+    trade = payload.get("trade_plan", {})
+    low = trade.get("entry_low", "n/a")
+    high = trade.get("entry_high", "n/a")
+    return f"{low} – {high}"
+
+
+def stop_of(payload: dict[str, Any]) -> Any:
+    return payload.get("trade_plan", {}).get("stop_loss", "n/a")
+
+
+def target_of(payload: dict[str, Any]) -> Any:
+    trade = payload.get("trade_plan", {})
+    return trade.get("take_profit", trade.get("target_price", "n/a"))
+
+
+def bucket(status: str) -> str:
+    if status == "buy":
+        return "Buy"
+    if status == "watch":
+        return "Watch"
+    if status == "avoid":
+        return "Avoid"
+    return "Neutral"
+
+
+hero(
+    title="Screener Search",
+    subtitle=(
+        "Prüfe gezielt Aktien, ETFs oder Ideen: Atlas bewertet Score, Entry-Zone, Stop, Target, "
+        "Datenqualität und Entscheidungsstatus in einer Search Console."
+    ),
+    kicker="ATLAS · Search Console",
+)
+
+left, right = st.columns([2, 1])
+
+with left:
+    raw_symbols = st.text_area(
+        "Ticker eingeben",
+        value=DEFAULT_SYMBOLS,
+        help="Mehrere Symbole mit Komma, Semikolon oder Zeilenumbruch trennen. Maximal 12 Symbole pro Lauf.",
+        height=110,
+    )
+
+with right:
+    metric_card(
+        "Search Mode",
+        "Manual",
+        "Gezielte Analyse einzelner Ideen, Watchlist-Werte oder Depotkandidaten.",
+        strong=True,
+    )
+
+symbols = normalize_symbols(raw_symbols)
+
+run_search = st.button("Atlas Search starten", type="primary")
+
+if not symbols:
+    st.warning("Bitte mindestens ein Symbol eingeben.")
+    st.stop()
+
+if run_search:
+    payloads = analyze_symbols(symbols)
+else:
+    payloads = analyze_symbols(symbols[:5])
+
+payloads = sorted(payloads, key=numeric_score, reverse=True)
+
+buy_count = sum(1 for p in payloads if status_of(p) == "buy")
+watch_count = sum(1 for p in payloads if status_of(p) == "watch")
+avoid_count = sum(1 for p in payloads if status_of(p) == "avoid")
+error_count = sum(1 for p in payloads if quality_of(p) == "error")
+
+section("Search Summary")
+
+a, b, c, d = st.columns(4)
+
+with a:
+    metric_card("Symbols", str(len(payloads)), "Analysierte Ticker in diesem Suchlauf.")
+
+with b:
+    metric_card("Buy", str(buy_count), "Handlungsfähige Kandidaten.", strong=buy_count > 0)
+
+with c:
+    metric_card("Watch", str(watch_count), "Interessant, aber nicht zwingend heute handeln.")
+
+with d:
+    metric_card("Errors", str(error_count), "Fehlerhafte oder nicht verfügbare Symbole.")
+
+section("Ranked Search Results")
+
+if payloads:
+    cols = st.columns(3)
+    for index, payload in enumerate(payloads):
+        with cols[index % 3]:
+            candidate_card(
+                symbol=symbol_of(payload),
+                status=status_of(payload),
+                score=score_of(payload),
+                entry=entry_of(payload),
+                note=f"Data quality: {quality_of(payload)}",
+            )
+else:
+    st.info("Keine Suchergebnisse verfügbar.")
+
+section("Detailed Search Table")
+
+rows = []
+for payload in payloads:
+    rows.append(
+        {
+            "Symbol": symbol_of(payload),
+            "Decision": bucket(status_of(payload)),
+            "Atlas Score": score_of(payload),
+            "Entry Zone": entry_of(payload),
+            "Stop": stop_of(payload),
+            "Target": target_of(payload),
+            "Data Quality": quality_of(payload),
+            "Error": payload.get("error", ""),
+        }
+    )
+
+if rows:
+    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+
+section("Decision Guidance")
+
+if buy_count > 0:
+    st.success(
+        "Mindestens ein Suchergebnis liegt in der Buy-Zone. Nächster Schritt: Back Book öffnen, Chart prüfen, Positionsgröße und Portfolio-Fit bewerten."
+    )
+elif watch_count > 0:
+    st.info(
+        "Die Suche liefert vor allem Watch-Kandidaten. Atlas empfiehlt: beobachten, Entry-Zonen respektieren und nicht nachlaufen."
+    )
+elif avoid_count > 0:
+    st.warning(
+        "Die Suche liefert überwiegend Avoid-Signale. Das ist kein Fehler, sondern Schutz vor schlechten Einstiegen."
+    )
+else:
+    st.info(
+        "Keine klare Entscheidungslogik verfügbar. Prüfe Symbol, Datenqualität und Provider Status."
+    )
+
+section("How to Use This Page")
+
+x, y, z = st.columns(3)
+
+with x:
+    metric_card(
+        "1 · Idee eingeben",
+        "Ticker",
+        "Beispiele: MSFT, V, NVDA, JEPQ, QQQ, XLE.",
+    )
+
+with y:
+    metric_card(
+        "2 · Score lesen",
+        "Atlas",
+        "Score, Status und Entry-Zone sagen dir, ob die Idee prüfenswert ist.",
+    )
+
+with z:
+    metric_card(
+        "3 · Nicht blind handeln",
+        "Back Book",
+        "Diese Seite ist ein Vorfilter. Die Detailentscheidung kommt im Back Book.",
+    )
