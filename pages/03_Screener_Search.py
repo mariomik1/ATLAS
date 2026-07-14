@@ -136,7 +136,31 @@ def exchange_of(payload: dict[str, Any]) -> str:
 
 def target_of(payload: dict[str, Any]) -> Any:
     trade = payload.get("trade_plan", {})
-    return trade.get("take_profit", trade.get("target_price", "n/a"))
+
+    explicit_target = (
+        trade.get("take_profit")
+        or trade.get("target_price")
+        or trade.get("take_profit_price")
+        or trade.get("tp")
+    )
+    if explicit_target not in (None, "", "n/a"):
+        return explicit_target
+
+    try:
+        entry_low = float(trade.get("entry_low"))
+        entry_high = float(trade.get("entry_high"))
+        stop = float(trade.get("stop_loss"))
+
+        entry_mid = (entry_low + entry_high) / 2
+        risk = entry_mid - stop
+
+        if risk <= 0:
+            return "n/a"
+
+        technical_target = entry_mid + (2 * risk)
+        return round(technical_target, 2)
+    except Exception:
+        return "n/a"
 
 
 
