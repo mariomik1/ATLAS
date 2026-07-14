@@ -7,6 +7,13 @@ import streamlit as st
 from atlas_core.orchestrator import AtlasOrchestrator
 from atlas_core.screener.quote_context import get_quote_context
 from atlas_core.screener.trade_setup import TradeSetup, build_trade_setup
+from atlas_core.screener.setup_chart import (
+    distance_to_stop_pct,
+    distance_to_target_pct,
+    risk_reward_ratio,
+    setup_chart,
+    setup_quality_note,
+)
 from atlas_core.ui.theme import (
     candidate_card,
     hero,
@@ -226,6 +233,21 @@ score_explanation_card(
     ),
 )
 
+st.markdown("### Setup Quality")
+
+q1, q2, q3 = st.columns(3)
+with q1:
+    st.metric("Risk / Reward", risk_reward_ratio(selected_setup))
+with q2:
+    st.metric("Distance to Stop", f"{distance_to_stop_pct(selected_setup)}%")
+with q3:
+    st.metric("Distance to Target", f"{distance_to_target_pct(selected_setup)}%")
+
+st.caption(setup_quality_note(selected_setup))
+
+st.markdown("### Setup Chart")
+setup_chart(selected_setup, period="3mo")
+
 section("Detailed Search Table")
 
 rows = []
@@ -243,6 +265,9 @@ for payload in payloads:
             "Stop": f"{setup.stop} {setup.currency}",
             "Target": f"{setup.target} {setup.currency}",
             "Target Horizon": setup.target_horizon,
+            "Risk/Reward": risk_reward_ratio(setup),
+            "Dist. Stop %": distance_to_stop_pct(setup),
+            "Dist. Target %": distance_to_target_pct(setup),
             "Setup Type": setup_badge(setup),
             "Exchange": setup.exchange,
             "Data Quality": quality_of(payload),
