@@ -7,6 +7,7 @@ import streamlit as st
 from atlas_core.orchestrator import AtlasOrchestrator
 from atlas_core.screener.quote_context import get_quote_context
 from atlas_core.screener.trade_setup import TradeSetup, build_trade_setup
+from atlas_core.screener.decision_layer import build_decision_layer
 from atlas_core.screener.setup_chart import (
     distance_to_stop_pct,
     distance_to_target_pct,
@@ -213,6 +214,21 @@ selected_symbol = st.selectbox(
 
 selected_payload = next(payload for payload in payloads if symbol_of(payload) == selected_symbol)
 selected_setup = setups[selected_symbol]
+selected_decision = build_decision_layer(
+    score_of(selected_payload),
+    status_of(selected_payload),
+    selected_setup,
+)
+
+st.markdown("### Decision Layer")
+
+d1, d2 = st.columns([1, 2])
+with d1:
+    st.metric("Decision", selected_decision.label)
+    st.caption(f"Priority: {selected_decision.priority}")
+with d2:
+    st.markdown(f"**Action:** {selected_decision.action}")
+    st.caption(selected_decision.reason)
 
 score_explanation_card(
     symbol=selected_symbol,
@@ -259,6 +275,7 @@ for payload in payloads:
         {
             "Symbol": symbol,
             "Status": bucket(status_of(payload)),
+            "Decision": build_decision_layer(score_of(payload), status_of(payload), setup).label,
             "Score": score_of(payload),
             "Current Price": f"{setup.current_price} {setup.currency}",
             "Entry Zone": f"{setup.entry_zone} {setup.currency}",
