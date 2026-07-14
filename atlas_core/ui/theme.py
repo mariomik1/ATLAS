@@ -300,3 +300,88 @@ def candidate_card(symbol: str, status: str, score: Any, entry: str, note: str =
         """,
         unsafe_allow_html=True,
     )
+
+
+
+
+def score_explanation_card(
+    symbol: str,
+    score: Any,
+    status: str,
+    data_quality: str,
+    entry_zone: str,
+    stop: Any = "n/a",
+    target: Any = "n/a",
+    note: str = "",
+) -> None:
+    try:
+        score_float = float(score)
+    except Exception:
+        score_float = 0.0
+
+    normalized_status = (status or "neutral").lower()
+
+    if score_float >= 80:
+        score_label = "Strong"
+        score_comment = "Das Setup wirkt im aktuellen MVP-Scoring stark."
+        score_progress = 0.9
+    elif score_float >= 70:
+        score_label = "Constructive"
+        score_comment = "Das Setup ist interessant, aber noch nicht automatisch kaufwürdig."
+        score_progress = 0.75
+    elif score_float >= 60:
+        score_label = "Mixed"
+        score_comment = "Das Setup ist gemischt und benötigt zusätzliche Prüfung."
+        score_progress = 0.6
+    else:
+        score_label = "Weak"
+        score_comment = "Das Setup wirkt aktuell schwach oder unvollständig."
+        score_progress = 0.4
+
+    if normalized_status == "buy":
+        decision_comment = "Atlas sieht ein potenziell handlungsfähiges Setup. Entry, Risiko und Positionsgröße müssen trotzdem geprüft werden."
+    elif normalized_status == "watch":
+        decision_comment = "Atlas sieht einen interessanten Kandidaten, aber noch kein klares Signal für aggressives Handeln."
+    elif normalized_status == "avoid":
+        decision_comment = "Atlas warnt davor, diesem Setup aktuell hinterherzulaufen."
+    else:
+        decision_comment = "Atlas liefert noch keine klare Entscheidung."
+
+    quality_comment = {
+        "delayed": "Echte, aber zeitverzögerte Marktdaten sind verfügbar.",
+        "sample": "Atlas nutzt Sample- oder Fallback-Daten. Aussagekraft ist begrenzt.",
+        "error": "Für dieses Symbol gab es ein Datenproblem.",
+    }.get(str(data_quality).lower(), "Datenqualität ist nicht eindeutig klassifiziert.")
+
+    missing_layers = "Fundamentals, News/Catalysts, Portfolio-Fit und persönlicher FIRE-Fit sind noch nicht vollständig im Score enthalten."
+
+    with st.container(border=True):
+        top_left, top_right = st.columns([2, 1])
+
+        with top_left:
+            st.subheader(f"{symbol} · Score Transparency")
+            st.caption(f"{score_label} · Status: {status} · Data Quality: {data_quality}")
+
+        with top_right:
+            st.metric("Atlas Score", score)
+
+        st.progress(score_progress)
+
+        c1, c2, c3 = st.columns(3)
+        with c1:
+            st.metric("Entry Zone", entry_zone)
+        with c2:
+            st.metric("Stop", stop)
+        with c3:
+            st.metric("Target", target)
+
+        st.markdown("### Warum dieser Score?")
+
+        st.markdown(f"**1 · Score Interpretation**  \n{score_comment}")
+        st.markdown(f"**2 · Decision Logic**  \n{decision_comment}")
+        st.markdown(f"**3 · Entry Quality**  \nEntry-Zone: `{entry_zone}` · Stop: `{stop}` · Target: `{target}`")
+        st.markdown(f"**4 · Data Quality**  \n`{data_quality}` — {quality_comment}")
+        st.markdown(f"**5 · Missing Layers**  \n{missing_layers}")
+
+        if note:
+            st.caption(note)

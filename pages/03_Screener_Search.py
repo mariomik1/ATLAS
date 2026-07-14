@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 from atlas_core.orchestrator import AtlasOrchestrator
-from atlas_core.ui.theme import candidate_card, hero, inject_atlas_theme, metric_card, section
+from atlas_core.ui.theme import candidate_card, hero, inject_atlas_theme, metric_card, score_explanation_card, section
 
 
 st.set_page_config(
@@ -181,6 +181,31 @@ if payloads:
             )
 else:
     st.info("Keine Suchergebnisse verfügbar.")
+
+
+section("Score Transparency")
+
+if payloads:
+    selected_symbol = st.selectbox(
+        "Symbol für Score-Erklärung auswählen",
+        options=[symbol_of(payload) for payload in payloads],
+        index=0,
+    )
+
+    selected_payload = next(
+        payload for payload in payloads if symbol_of(payload) == selected_symbol
+    )
+
+    score_explanation_card(
+        symbol=symbol_of(selected_payload),
+        score=score_of(selected_payload),
+        status=status_of(selected_payload),
+        data_quality=quality_of(selected_payload),
+        entry_zone=entry_of(selected_payload),
+        stop=stop_of(selected_payload),
+        target=target_of(selected_payload),
+        note="Sprint 12A: Transparenz-Layer für den aktuellen MVP-Score. Die fachliche Tiefe wird in den nächsten Sprints erweitert.",
+    )
 
 section("Detailed Search Table")
 
