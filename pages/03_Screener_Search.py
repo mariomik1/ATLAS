@@ -233,6 +233,44 @@ def exchange_display(payload: dict[str, Any]) -> str:
         return str(value)
     return exchange_of(payload)
 
+def target_horizon_of(payload: dict[str, Any]) -> str:
+    """
+    MVP swing-trading horizon estimate.
+    Estimates how long the technical 2R target may reasonably need based on
+    target distance versus current price.
+    """
+    try:
+        current_price = float(current_price_display(payload))
+        target = float(target_of(payload))
+
+        if current_price <= 0 or target <= 0:
+            return "n/a"
+
+        distance_pct = ((target - current_price) / current_price) * 100
+
+        if distance_pct <= 0:
+            return "n/a"
+        if distance_pct <= 5:
+            return "2–4 Wochen"
+        if distance_pct <= 12:
+            return "4–8 Wochen"
+        if distance_pct <= 20:
+            return "8–12 Wochen"
+        return "3–6 Monate"
+    except Exception:
+        return "n/a"
+
+
+def setup_type_of(payload: dict[str, Any]) -> str:
+    horizon = target_horizon_of(payload)
+    if horizon in {"2–4 Wochen", "4–8 Wochen", "8–12 Wochen"}:
+        return "Swing"
+    if horizon == "3–6 Monate":
+        return "Position"
+    return "n/a"
+
+
+
 def bucket(status: str) -> str:
     if status == "buy":
         return "Buy"
@@ -348,7 +386,9 @@ if payloads:
         current_price=current_price_display(selected_payload),
         currency=currency_display(selected_payload),
         exchange=exchange_display(selected_payload),
-        note="Sprint 12B: Score-Kontext mit aktuellem Kurs, Währung und Börsenplatz. Fundamentals, News und Portfolio-Fit folgen in den nächsten Ausbaustufen.",
+        target_horizon=target_horizon_of(selected_payload),
+        setup_type=setup_type_of(selected_payload),
+        note="Sprint 12D: Target-Horizont ergänzt. Aktuell MVP-Schätzung auf Basis der Target-Distanz; später mit ATR, Volatilität und Trendstärke verfeinern.",
     )
 
 section("Detailed Search Table")
@@ -364,6 +404,8 @@ for payload in payloads:
             "Entry Zone": f"{entry_of(payload)} {currency_display(payload)}",
             "Stop": f"{stop_of(payload)} {currency_display(payload)}",
             "Target": f"{target_of(payload)} {currency_display(payload)}",
+            "Target Horizon": target_horizon_of(payload),
+            "Setup Type": setup_type_of(payload),
             "Exchange": exchange_display(payload),
             "Data Quality": quality_of(payload),
             "Error": payload.get("error", ""),

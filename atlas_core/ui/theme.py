@@ -315,6 +315,8 @@ def score_explanation_card(
     current_price: Any = "n/a",
     currency: str = "n/a",
     exchange: str = "n/a",
+    target_horizon: str = "n/a",
+    setup_type: str = "Swing",
     note: str = "",
 ) -> None:
     try:
@@ -370,7 +372,7 @@ def score_explanation_card(
 
         st.progress(score_progress)
 
-        c1, c2, c3, c4 = st.columns(4)
+        c1, c2, c3, c4, c5 = st.columns(5)
         with c1:
             st.metric("Current Price", f"{current_price} {currency}")
         with c2:
@@ -379,14 +381,16 @@ def score_explanation_card(
             st.metric("Stop", f"{stop} {currency}")
         with c4:
             st.metric("Target", f"{target} {currency}")
+        with c5:
+            st.metric("Horizon", target_horizon)
 
-        st.caption(f"Exchange / venue: {exchange}")
+        st.caption(f"Setup type: {setup_type} · Exchange / venue: {exchange}")
 
         st.markdown("### Warum dieser Score?")
 
         st.markdown(f"**1 · Score Interpretation**  \n{score_comment}")
         st.markdown(f"**2 · Decision Logic**  \n{decision_comment}")
-        st.markdown(f"**3 · Entry Quality**  \nCurrent Price: `{current_price} {currency}` · Entry-Zone: `{entry_zone} {currency}` · Stop: `{stop} {currency}` · Target: `{target} {currency}` · Venue: `{exchange}`")
+        st.markdown(f"**3 · Entry Quality**  \nCurrent Price: `{current_price} {currency}` · Entry-Zone: `{entry_zone} {currency}` · Stop: `{stop} {currency}` · Target: `{target} {currency}` · Horizon: `{target_horizon}` · Setup: `{setup_type}` · Venue: `{exchange}`")
         st.markdown(f"**4 · Data Quality**  \n`{data_quality}` — {quality_comment}")
         st.markdown(f"**5 · Missing Layers**  \n{missing_layers}")
 
