@@ -2,11 +2,11 @@ from __future__ import annotations
 
 from typing import Any
 
-import pandas as pd
+import yfinance as yf
 import streamlit as st
 
 from atlas_core.orchestrator import AtlasOrchestrator
-from atlas_core.ui.theme import candidate_card, hero, inject_atlas_theme, metric_card, score_explanation_card, section
+from atlas_core.ui.theme import candidate_card, hero, inject_atlas_theme, metric_card, premium_table, score_explanation_card, section
 
 
 st.set_page_config(
@@ -18,7 +18,7 @@ st.set_page_config(
 inject_atlas_theme()
 
 
-DEFAULT_SYMBOLS = "V, MSFT, NVDA, CRWD, XLE"
+DEFAULT_SYMBOLS = ""
 
 
 def normalize_symbols(raw: str) -> list[str]:
@@ -88,10 +88,126 @@ def stop_of(payload: dict[str, Any]) -> Any:
     return payload.get("trade_plan", {}).get("stop_loss", "n/a")
 
 
+def current_price_of(payload: dict[str, Any]) -> Any:
+    candidates = [
+        payload.get("current_price"),
+        payload.get("last_price"),
+        payload.get("price"),
+        payload.get("asset", {}).get("current_price", "n/a"),
+        payload.get("asset", {}).get("last_price", "n/a"),
+        payload.get("market_data", {}).get("current_price", "n/a"),
+        payload.get("market_data", {}).get("last_close", "n/a"),
+        payload.get("quote", {}).get("price", "n/a"),
+        payload.get("quote", {}).get("regular_market_price", "n/a"),
+    ]
+    for value in candidates:
+        if value not in (None, "", "n/a"):
+            return value
+    return "n/a"
+
+
+def currency_of(payload: dict[str, Any]) -> str:
+    candidates = [
+        payload.get("currency"),
+        payload.get("asset", {}).get("currency"),
+        payload.get("market_data", {}).get("currency"),
+        payload.get("quote", {}).get("currency"),
+    ]
+    for value in candidates:
+        if value not in (None, "", "n/a"):
+            return str(value)
+    return "USD"
+
+
+def exchange_of(payload: dict[str, Any]) -> str:
+    candidates = [
+        payload.get("exchange"),
+        payload.get("asset", {}).get("exchange"),
+        payload.get("asset", {}).get("exchange_name"),
+        payload.get("market_data", {}).get("exchange"),
+        payload.get("quote", {}).get("exchange"),
+        payload.get("quote", {}).get("full_exchange_name"),
+    ]
+    for value in candidates:
+        if value not in (None, "", "n/a"):
+            return str(value)
+    return "yfinance / default listing"
+
+
 def target_of(payload: dict[str, Any]) -> Any:
     trade = payload.get("trade_plan", {})
     return trade.get("take_profit", trade.get("target_price", "n/a"))
 
+
+
+def live_quote_context(symbol: str) -> dict[str, Any]:
+    try:
+        ticker = yf.Ticker(symbol)
+        info = ticker.fast_info
+
+        current_price = getattr(info, "last_price", None)
+        currency = getattr(info, "currency", None)
+
+        raw_info = {}
+        try:
+            raw_info = ticker.info or {}
+        except Exception:
+            raw_info = {}
+
+        if current_price in (None, "", "n/a"):
+            current_price = raw_info.get("currentPrice") or raw_info.get("regularMarketPrice") or raw_info.get("previousClose")
+
+        if currency in (None, "", "n/a"):
+            currency = raw_info.get("currency", "n/a")
+
+        exchange = (
+            raw_info.get("fullExchangeName")
+            or raw_info.get("exchange")
+            or raw_info.get("market")
+            or "yfinance / default listing"
+        )
+
+        if isinstance(current_price, (int, float)):
+            current_price = round(float(current_price), 2)
+
+        return {
+            "current_price": current_price if current_price not in (None, "") else "n/a",
+            "currency": currency if currency not in (None, "") else "n/a",
+            "exchange": exchange if exchange not in (None, "") else "yfinance / default listing",
+        }
+    except Exception:
+        return {
+            "current_price": "n/a",
+            "currency": "n/a",
+            "exchange": "yfinance / unavailable",
+        }
+
+
+def current_price_display(payload: dict[str, Any]) -> Any:
+    symbol = symbol_of(payload)
+    quote = live_quote_context(symbol)
+    value = quote.get("current_price", "n/a")
+    if value not in (None, "", "n/a"):
+        return value
+    return current_price_of(payload)
+
+
+def currency_display(payload: dict[str, Any]) -> str:
+    symbol = symbol_of(payload)
+    quote = live_quote_context(symbol)
+    value = quote.get("currency", "n/a")
+    if value not in (None, "", "n/a"):
+        return str(value)
+    return currency_of(payload)
+
+
+def exchange_display(payload: dict[str, Any]) -> str:
+    symbol = symbol_of(payload)
+    quote = live_quote_context(symbol)
+    value = quote.get("exchange", "n/a")
+    if value not in (None, "", "n/a"):
+        return str(value)
+    return exchange_of(payload)
 
 def bucket(status: str) -> str:
     if status == "buy":
@@ -118,6 +234,7 @@ with left:
     raw_symbols = st.text_area(
         "Ticker eingeben",
         value=DEFAULT_SYMBOLS,
+        placeholder="z. B. AAPL, MSFT, NVDA, V, JEPQ, QQQ",
         help="Mehrere Symbole mit Komma, Semikolon oder Zeilenumbruch trennen. Maximal 12 Symbole pro Lauf.",
         height=110,
     )
@@ -204,7 +321,10 @@ if payloads:
         entry_zone=entry_of(selected_payload),
         stop=stop_of(selected_payload),
         target=target_of(selected_payload),
-        note="Sprint 12A: Transparenz-Layer für den aktuellen MVP-Score. Die fachliche Tiefe wird in den nächsten Sprints erweitert.",
+        current_price=current_price_display(selected_payload),
+        currency=currency_display(selected_payload),
+        exchange=exchange_display(selected_payload),
+        note="Sprint 12B: Score-Kontext mit aktuellem Kurs, Währung und Börsenplatz. Fundamentals, News und Portfolio-Fit folgen in den nächsten Ausbaustufen.",
     )
 
 section("Detailed Search Table")
@@ -216,16 +336,18 @@ for payload in payloads:
             "Symbol": symbol_of(payload),
             "Decision": bucket(status_of(payload)),
             "Atlas Score": score_of(payload),
-            "Entry Zone": entry_of(payload),
-            "Stop": stop_of(payload),
-            "Target": target_of(payload),
+            "Current Price": f"{current_price_display(payload)} {currency_display(payload)}",
+            "Entry Zone": f"{entry_of(payload)} {currency_display(payload)}",
+            "Stop": f"{stop_of(payload)} {currency_display(payload)}",
+            "Target": f"{target_of(payload)} {currency_display(payload)}",
+            "Exchange": exchange_display(payload),
             "Data Quality": quality_of(payload),
             "Error": payload.get("error", ""),
         }
     )
 
 if rows:
-    st.dataframe(pd.DataFrame(rows), width="stretch", hide_index=True)
+    premium_table(rows)
 
 section("Decision Guidance")
 

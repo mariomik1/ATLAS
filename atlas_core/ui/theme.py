@@ -312,6 +312,9 @@ def score_explanation_card(
     entry_zone: str,
     stop: Any = "n/a",
     target: Any = "n/a",
+    current_price: Any = "n/a",
+    currency: str = "n/a",
+    exchange: str = "n/a",
     note: str = "",
 ) -> None:
     try:
@@ -367,21 +370,215 @@ def score_explanation_card(
 
         st.progress(score_progress)
 
-        c1, c2, c3 = st.columns(3)
+        c1, c2, c3, c4 = st.columns(4)
         with c1:
-            st.metric("Entry Zone", entry_zone)
+            st.metric("Current Price", f"{current_price} {currency}")
         with c2:
-            st.metric("Stop", stop)
+            st.metric("Entry Zone", f"{entry_zone} {currency}")
         with c3:
-            st.metric("Target", target)
+            st.metric("Stop", f"{stop} {currency}")
+        with c4:
+            st.metric("Target", f"{target} {currency}")
+
+        st.caption(f"Exchange / venue: {exchange}")
 
         st.markdown("### Warum dieser Score?")
 
         st.markdown(f"**1 · Score Interpretation**  \n{score_comment}")
         st.markdown(f"**2 · Decision Logic**  \n{decision_comment}")
-        st.markdown(f"**3 · Entry Quality**  \nEntry-Zone: `{entry_zone}` · Stop: `{stop}` · Target: `{target}`")
+        st.markdown(f"**3 · Entry Quality**  \nCurrent Price: `{current_price} {currency}` · Entry-Zone: `{entry_zone} {currency}` · Stop: `{stop} {currency}` · Target: `{target} {currency}` · Venue: `{exchange}`")
         st.markdown(f"**4 · Data Quality**  \n`{data_quality}` — {quality_comment}")
         st.markdown(f"**5 · Missing Layers**  \n{missing_layers}")
 
         if note:
             st.caption(note)
+
+
+def premium_table(rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        st.info("Keine Daten verfügbar.")
+        return
+
+    columns = list(rows[0].keys())
+
+    header = "".join(f"<th>{_escape(col)}</th>" for col in columns)
+    body_rows = []
+    for row in rows:
+        cells = "".join(f"<td>{_escape(row.get(col, ''))}</td>" for col in columns)
+        body_rows.append(f"<tr>{cells}</tr>")
+
+    body = "".join(body_rows)
+
+    st.markdown(
+        f"""
+        <div class="atlas-table-wrap">
+            <table class="atlas-table">
+                <thead><tr>{header}</tr></thead>
+                <tbody>{body}</tbody>
+            </table>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def market_context_card(
+    current_price: Any = "n/a",
+    currency: str = "n/a",
+    exchange: str = "n/a",
+    data_quality: str = "unknown",
+) -> None:
+    st.markdown(
+        f"""
+        <div class="atlas-card">
+            <div class="atlas-label">Market Context</div>
+            <div class="atlas-value">{_escape(current_price)} {_escape(currency)}</div>
+            <div class="atlas-note">
+                Exchange / venue: {_escape(exchange)}<br/>
+                Data quality: {_escape(data_quality)}
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+ATLAS_CSS += """
+<style>
+/* Sprint 12B visual consistency overrides */
+
+.atlas-hero {
+    background: #0F172A !important;
+}
+
+.atlas-card,
+.atlas-card-strong {
+    background: #111827 !important;
+}
+
+.atlas-progress-fill {
+    background: var(--atlas-blue) !important;
+}
+
+button[kind="primary"], .stButton > button {
+    background: var(--atlas-gold) !important;
+    color: #050816 !important;
+}
+
+textarea,
+input,
+div[data-baseweb="input"] input,
+div[data-baseweb="textarea"] textarea {
+    background-color: #0B1020 !important;
+    color: #F8FAFC !important;
+    border: 1px solid rgba(148, 163, 184, 0.35) !important;
+    border-radius: 14px !important;
+}
+
+textarea::placeholder,
+input::placeholder {
+    color: #94A3B8 !important;
+    opacity: 1 !important;
+}
+
+.atlas-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 20px;
+    border: 1px solid var(--atlas-border);
+    background: #0F172A;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
+}
+
+.atlas-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #E5E7EB;
+    font-size: 0.88rem;
+}
+
+.atlas-table thead {
+    background: #111827;
+}
+
+.atlas-table th {
+    text-align: left;
+    padding: 0.85rem 0.9rem;
+    color: var(--atlas-gold);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--atlas-border);
+    white-space: nowrap;
+}
+
+.atlas-table td {
+    padding: 0.85rem 0.9rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    color: #E5E7EB;
+    white-space: nowrap;
+}
+
+.atlas-table tbody tr:hover {
+    background: rgba(96, 165, 250, 0.08);
+}
+
+.atlas-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+div[data-testid="stMetric"] {
+    background: #111827 !important;
+    border: 1px solid rgba(148, 163, 184, 0.25) !important;
+}
+
+div[data-testid="stMetric"] label,
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+    color: #CBD5E1 !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #F8FAFC !important;
+}
+</style>
+"""
+
+
+ATLAS_CSS += """
+<style>
+/* Sprint 12C readability fixes */
+
+.atlas-value {
+    font-size: 1.42rem !important;
+    line-height: 1.14 !important;
+    word-break: break-word !important;
+}
+
+.atlas-card .atlas-small-table,
+.atlas-card-strong .atlas-small-table {
+    font-size: 0.82rem !important;
+    line-height: 1.55 !important;
+    white-space: normal !important;
+}
+
+.atlas-card,
+.atlas-card-strong {
+    overflow-wrap: anywhere !important;
+}
+
+.atlas-note {
+    font-size: 0.82rem !important;
+    line-height: 1.45 !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    font-size: 1.25rem !important;
+    line-height: 1.2 !important;
+    overflow-wrap: anywhere !important;
+}
+
+div[data-testid="stMetric"] {
+    overflow-wrap: anywhere !important;
+}
+</style>
+"""
