@@ -77,15 +77,67 @@ def numeric_score(payload: dict[str, Any]) -> float:
         return 0.0
 
 
+def is_missing(value: Any) -> bool:
+    return value in (None, "", "n/a", "n/a – n/a", "None – None")
+
+
+def as_float_or_none(value: Any) -> float | None:
+    try:
+        if value in (None, "", "n/a"):
+            return None
+        return float(value)
+    except Exception:
+        return None
+
+
+def fallback_entry_low(payload: dict[str, Any]) -> Any:
+    current = as_float_or_none(current_price_display(payload))
+    if current is None:
+        return "n/a"
+    return round(current * 0.98, 2)
+
+
+def fallback_entry_high(payload: dict[str, Any]) -> Any:
+    current = as_float_or_none(current_price_display(payload))
+    if current is None:
+        return "n/a"
+    return round(current, 2)
+
+
+def fallback_stop(payload: dict[str, Any]) -> Any:
+    current = as_float_or_none(current_price_display(payload))
+    if current is None:
+        return "n/a"
+    return round(current * 0.93, 2)
+
+
+def fallback_target(payload: dict[str, Any]) -> Any:
+    current = as_float_or_none(current_price_display(payload))
+    if current is None:
+        return "n/a"
+    return round(current * 1.08, 2)
+
+
 def entry_of(payload: dict[str, Any]) -> str:
     trade = payload.get("trade_plan", {})
     low = trade.get("entry_low", "n/a")
     high = trade.get("entry_high", "n/a")
+
+    if is_missing(low) or is_missing(high):
+        low = fallback_entry_low(payload)
+        high = fallback_entry_high(payload)
+
     return f"{low} – {high}"
 
 
 def stop_of(payload: dict[str, Any]) -> Any:
-    return payload.get("trade_plan", {}).get("stop_loss", "n/a")
+    trade = payload.get("trade_plan", {})
+    stop = trade.get("stop_loss", "n/a")
+
+    if is_missing(stop):
+        return fallback_stop(payload)
+
+    return stop
 
 
 def current_price_of(payload: dict[str, Any]) -> Any:
@@ -147,21 +199,23 @@ def target_of(payload: dict[str, Any]) -> Any:
         return explicit_target
 
     try:
-        entry_low = float(trade.get("entry_low"))
-        entry_high = float(trade.get("entry_high"))
-        stop = float(trade.get("stop_loss"))
+        entry_low = as_float_or_none(trade.get("entry_low"))
+        entry_high = as_float_or_none(trade.get("entry_high"))
+        stop = as_float_or_none(trade.get("stop_loss"))
+
+        if entry_low is None or entry_high is None or stop is None:
+            return fallback_target(payload)
 
         entry_mid = (entry_low + entry_high) / 2
         risk = entry_mid - stop
 
         if risk <= 0:
-            return "n/a"
+            return fallback_target(payload)
 
         technical_target = entry_mid + (2 * risk)
         return round(technical_target, 2)
     except Exception:
-        return "n/a"
-
+        return fallback_target(payload)
 
 
 def live_quote_context(symbol: str) -> dict[str, Any]:
@@ -262,7 +316,14 @@ def target_horizon_of(payload: dict[str, Any]) -> str:
 
 
 def setup_type_of(payload: dict[str, Any]) -> str:
+    symbol = symbol_of(payload).upper()
     horizon = target_horizon_of(payload)
+
+    etf_like = symbol in {"QQQ", "JEPQ", "SPY", "VOO", "VTI", "IWM", "XLE", "XLK", "JEPI"}
+
+    if etf_like and horizon != "n/a":
+        return "ETF Swing"
+
     if horizon in {"2–4 Wochen", "4–8 Wochen", "8–12 Wochen"}:
         return "Swing"
     if horizon == "3–6 Monate":
